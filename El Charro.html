@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Común — Bono de uso sobre bienes comunes</title>
+  <style>
+    :root {
+      --green: #2d6a4f;
+      --green-light: #40916c;
+      --green-bg: #d8f3dc;
+      --bg: #fafaf9;
+      --card: #ffffff;
+      --text: #1b1b1b;
+      --muted: #6b7280;
+      --border: #e5e7eb;
+      --accent: #f59e0b;
+    }
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; background: var(--bg); color: var(--text); line-height: 1.6; }
+    a { color: var(--green); text-decoration: none; }
+    a:hover { text-decoration: underline; }
+
+    /* NAV */
+    nav {
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 1rem 2rem; background: var(--card); border-bottom: 1px solid var(--border);
+      position: sticky; top: 0; z-index: 100;
+    }
+    nav .logo { font-size: 1.4rem; font-weight: 700; color: var(--green); }
+    nav ul { display: flex; gap: 1.5rem; list-style: none; }
+    nav ul a { color: var(--text); font-size: 0.95rem; }
+    nav ul a:hover { color: var(--green); text-decoration: none; }
+
+    /* HERO */
+    .hero {
+      text-align: center; padding: 5rem 2rem 4rem;
+      background: linear-gradient(180deg, var(--green-bg) 0%, var(--bg) 100%);
+    }
+    .hero h1 { font-size: 2.8rem; font-weight: 800; margin-bottom: 1rem; color: var(--green); }
+    .hero p { font-size: 1.2rem; color: var(--muted); max-width: 540px; margin: 0 auto 2rem; }
+    .btn {
+      display: inline-block; padding: 0.75rem 1.8rem; border-radius: 8px;
+      font-weight: 600; font-size: 1rem; cursor: pointer; border: none;
+    }
+    .btn-primary { background: var(--green); color: #fff; }
+    .btn-primary:hover { background: var(--green-light); }
+    .btn-outline { background: transparent; border: 2px solid var(--green); color: var(--green); margin-left: 0.75rem; }
+
+    /* SECTIONS */
+    section { padding: 4rem 2rem; max-width: 1100px; margin: 0 auto; }
+    section h2 { font-size: 1.8rem; margin-bottom: 0.5rem; color: var(--green); }
+    section .subtitle { color: var(--muted); margin-bottom: 2rem; }
+
+    /* CARDS GRID */
+    .grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 1.5rem; }
+    .card {
+      background: var(--card); border: 1px solid var(--border); border-radius: 12px;
+      padding: 1.5rem; transition: box-shadow 0.2s;
+    }
+    .card:hover { box-shadow: 0 4px 20px rgba(0,0,0,0.08); }
+    .card .emoji { font-size: 2rem; margin-bottom: 0.5rem; }
+    .card h3 { font-size: 1.1rem; margin-bottom: 0.3rem; }
+    .card .meta { font-size: 0.85rem; color: var(--muted); margin-bottom: 1rem; }
+    .progress-bar { height: 8px; background: var(--border); border-radius: 4px; overflow: hidden; margin-bottom: 0.5rem; }
+    .progress-fill { height: 100%; background: var(--green); border-radius: 4px; }
+    .card .price { font-weight: 700; font-size: 1.1rem; margin-top: 0.5rem; }
+    .card .tag { display: inline-block; font-size: 0.75rem; background: var(--green-bg); color: var(--green); padding: 0.2rem 0.6rem; border-radius: 4px; margin-top: 0.5rem; }
+
+    /* MARKET TABLE */
+    table { width: 100%; border-collapse: collapse; background: var(--card); border-radius: 12px; overflow: hidden; border: 1px solid var(--border); }
+    th, td { padding: 0.8rem 1rem; text-align: left; border-bottom: 1px solid var(--border); }
+    th { background: var(--green-bg); color: var(--green); font-size: 0.85rem; text-transform: uppercase; }
+    tr:last-child td { border-bottom: none; }
+
+    /* HOW IT WORKS */
+    .steps { display: grid; grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); gap: 1.5rem; }
+    .step { text-align: center; padding: 1.5rem; }
+    .step .num { width: 40px; height: 40px; border-radius: 50%; background: var(--green); color: #fff; display: flex; align-items: center; justify-content: center; font-weight: 700; margin: 0 auto 1rem; }
+    .step h4 { margin-bottom: 0.3rem; }
+    .step p { font-size: 0.9rem; color: var(--muted); }
+
+    /* FOOTER */
+    footer { text-align: center; padding: 2rem; color: var(--muted); font-size: 0.85rem; border-top: 1px solid var(--border); }
+  </style>
+</head>
+<body>
+
+<nav>
+  <div class="logo">🌿 Común</div>
+  <ul>
+    <li><a href="#explorar">Explorar</a></li>
+    <li><a href="#mercado">Mercado</a></li>
+    <li><a href="#como">Cómo funciona</a></li>
+    <li><a href="#">Mi Cartera</a></li>
+  </ul>
+</nav>
+
+<div class="hero">
+  <h1>Financia bienes comunes.<br>Obtén derecho de uso.</h1>
+  <p>Compra un bono de uso sobre un bien común. Úsalo, votá en asamblea, y transfiérelo cuando quieras.</p>
+  <button class="btn btn-primary">Explorar proyectos</button>
+  <button class="btn btn-outline">Cómo funciona</button>
+</div>
+
+<section id="explorar">
+  <h2>Proyectos activos</h2>
+  <p class="subtitle">Cada bono da derecho de uso fraccionado sobre un bien común gestionado por la comunidad.</p>
+  <div class="grid">
+    <div class="card">
+      <div class="emoji">🌿</div>
+      <h3>Huerta Común del Norte</h3>
+      <div class="meta">Madrid · 1.200 m² · 24 parcelas</div>
+      <div class="progress-bar"><div class="progress-fill" style="width:42%"></div></div>
+      <div class="meta">42% financiado · 120 bonos</div>
+      <div class="price">50 € / bono</div>
+      <span class="tag">1 parcela × 12 h/semana</span>
+      <span class="tag">Vence: Dic 2028</span>
+    </div>
+    <div class="card">
+      <div class="emoji">☀️</div>
+      <h3>Solar Comunitario La Cañada</h3>
+      <div class="meta">Sevilla · 48 paneles · 24 kW</div>
+      <div class="progress-bar"><div class="progress-fill" style="width:78%"></div></div>
+      <div class="meta">78% financiado · 60 bonos</div>
+      <div class="price">200 € / bono</div>
+      <span class="tag">2 kW asignados a tu vivienda</span>
+      <span class="tag">Vence: Jun 2030</span>
+    </div>
+    <div class="card">
+      <div class="emoji">🏠</div>
+      <h3>Coworking Barrio Sur</h3>
+      <div class="meta">Valencia · 80 m² · 20 puestos</div>
+      <div class="progress-bar"><div class="progress-fill" style="width:15%"></div></div>
+      <div class="meta">15% financiado · 200 bonos</div>
+      <div class="price">25 € / bono</div>
+      <span class="tag">4 h/semana de uso</span>
+      <span class="tag">Vence: Mar 2027</span>
+    </div>
+    <div class="card">
+      <div class="emoji">🚲</div>
+      <h3>Taller Común de Bicis</h3>
+      <div class="meta">Bilbao · 60 m² · Herramientas completas</div>
+      <div class="progress-bar"><div class="progress-fill" style="width:63%"></div></div>
+      <div class="meta">63% financiado · 80 bonos</div>
+      <div class="price">80 € / bono</div>
+      <span class="tag">6 h/mes de uso</span>
+      <span class="tag">Vence: Sep 2029</span>
+    </div>
+  </div>
+</section>
+
+<section id="mercado">
+  <h2>Mercado secundario</h2>
+  <p class="subtitle">Vende o compra bonos de uso. El comprador hereda el mismo derecho.</p>
+  <table>
+    <thead>
+      <tr><th>Proyecto</th><th>Bono</th><th>Precio</th><th>Vence</th><th></th></tr>
+    </thead>
+    <tbody>
+      <tr><td>🌿 Huerta Norte</td><td>1 × 50 €</td><td><strong>52 €</strong></td><td>12/2028</td><td><button class="btn btn-primary" style="padding:0.4rem 1rem;font-size:0.85rem">Comprar</button></td></tr>
+      <tr><td>🌿 Huerta Norte</td><td>1 × 50 €</td><td><strong>50 €</strong></td><td>12/2028</td><td><button class="btn btn-primary" style="padding:0.4rem 1rem;font-size:0.85rem">Comprar</button></td></tr>
+      <tr><td>☀️ Solar Cañada</td><td>1 × 200 €</td><td><strong>210 €</strong></td><td>06/2030</td><td><button class="btn btn-primary" style="padding:0.4rem 1rem;font-size:0.85rem">Comprar</button></td></tr>
+      <tr><td>🏠 Coworking Sur</td><td>2 × 25 €</td><td><strong>48 €</strong></td><td>03/2027</td><td><button class="btn btn-primary" style="padding:0.4rem 1rem;font-size:0.85rem">Comprar</button></td></tr>
+      <tr><td>🚲 Taller Bici</td><td>1 × 80 €</td><td><strong>80 €</strong></td><td>09/2029</td><td><button class="btn btn-primary" style="padding:0.4rem 1rem;font-size:0.85rem">Comprar</button></td></tr>
+    </tbody>
+  </table>
+</section>
+
+<section id="como">
+  <h2>Cómo funciona</h2>
+  <p class="subtitle">No es deuda. No es equity. Es un derecho de uso fraccionado y transferible.</p>
+  <div class="steps">
+    <div class="step">
+      <div class="num">1</div>
+      <h4>Elige un proyecto</h4>
+      <p>Explora bienes comunes en tu zona: huertas, solares, talleres, coworkings.</p>
+    </div>
+    <div class="step">
+      <div class="num">2</div>
+      <h4>Compra bonos de uso</h4>
+      <p>Cada bono da una cuota de uso del bien + 1 voto en asamblea.</p>
+    </div>
+    <div class="step">
+      <div class="num">3</div>
+      <h4>Usa y participa</h4>
+      <p>Accede al bien según tu cuota. Vota en asamblea trimestral.</p>
+    </div>
+    <div class="step">
+      <div class="num">4</div>
+      <h4>Transfiere o recupera</h4>
+      <p>Vende tu bono en el mercado secundario o recupera el 100% al vencimiento.</p>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <p>Común · Mockup conceptual · No es un producto financiero real</p>
+</footer>
+
+</body>
+</html>   
