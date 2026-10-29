@@ -52,7 +52,34 @@
     section h2 { font-size: 1.8rem; margin-bottom: 0.5rem; color: var(--green); }
     section .subtitle { color: var(--muted); margin-bottom: 2rem; }
 
-    /* CARDS GRID */
+    /* DESCRIPCIÓN GENERAL */
+    .descripcion { max-width: 720px; margin: 0 auto; text-align: center; }
+    .descripcion p { font-size: 1.1rem; color: var(--text); margin-bottom: 1rem; }
+    .descripcion .destacado { font-weight: 600; color: var(--green); }
+
+    /* ROLES */
+    .roles { display: grid; grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); gap: 1.5rem; margin-top: 2.5rem; }
+    .role-card {
+      background: var(--card); border: 2px solid var(--border); border-radius: 12px;
+      padding: 2rem 1.5rem; text-align: center; cursor: pointer;
+      transition: border-color 0.2s, box-shadow 0.2s;
+    }
+    .role-card:hover { border-color: var(--green); box-shadow: 0 4px 20px rgba(45,106,79,0.1); }
+    .role-card .emoji { font-size: 2.5rem; margin-bottom: 0.8rem; }
+    .role-card h3 { font-size: 1.2rem; margin-bottom: 0.5rem; color: var(--green); }
+    .role-card p { font-size: 0.9rem; color: var(--muted); margin-bottom: 1.2rem; }
+    .role-card .btn { font-size: 0.9rem; padding: 0.5rem 1.2rem; }
+
+    /* GRUPOS */
+    .grupos {
+      background: var(--green-bg); border-radius: 16px; padding: 3rem 2rem;
+      text-align: center; margin-top: 2rem;
+    }
+    .grupos h3 { font-size: 1.5rem; color: var(--green); margin-bottom: 0.8rem; }
+    .grupos p { font-size: 1rem; color: var(--text); max-width: 560px; margin: 0 auto 1.5rem; }
+    .grupos .btn { margin-left: 0; }
+
+    /* CARDS GRID — PROYECTOS EN FASE DE FINANCIACIÓN */
     .grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 1.5rem; }
     .card {
       background: var(--card); border: 1px solid var(--border); border-radius: 12px;
@@ -65,13 +92,25 @@
     .progress-bar { height: 8px; background: var(--border); border-radius: 4px; overflow: hidden; margin-bottom: 0.5rem; }
     .progress-fill { height: 100%; background: var(--green); border-radius: 4px; }
     .card .price { font-weight: 700; font-size: 1.1rem; margin-top: 0.5rem; }
-    .card .tag { display: inline-block; font-size: 0.75rem; background: var(--green-bg); color: var(--green); padding: 0.2rem 0.6rem; border-radius: 4px; margin-top: 0.5rem; }
+    .card .tag { display: inline-block; font-size: 0.75rem; background: var(--green-bg); color: var(--green); padding: 0.2rem 0.6rem; border-radius: 4px; margin-top: 0.5rem; margin-right: 0.3rem; }
 
-    /* MARKET TABLE */
-    table { width: 100%; border-collapse: collapse; background: var(--card); border-radius: 12px; overflow: hidden; border: 1px solid var(--border); }
-    th, td { padding: 0.8rem 1rem; text-align: left; border-bottom: 1px solid var(--border); }
-    th { background: var(--green-bg); color: var(--green); font-size: 0.85rem; text-transform: uppercase; }
-    tr:last-child td { border-bottom: none; }
+    /* PROYECTOS EN MARCHA */
+    .proyecto-bloque {
+      background: var(--card); border: 1px solid var(--border); border-radius: 16px;
+      padding: 2rem; margin-bottom: 2rem;
+    }
+    .proyecto-bloque h3 { font-size: 1.4rem; color: var(--green); margin-bottom: 0.3rem; }
+    .proyecto-bloque .meta { font-size: 0.9rem; color: var(--muted); margin-bottom: 1rem; }
+    .proyecto-bloque .desc { font-size: 0.95rem; margin-bottom: 1.5rem; }
+    .proyecto-bloque .bonos-header { font-size: 1rem; font-weight: 600; color: var(--text); margin-bottom: 0.8rem; }
+
+    .bono-table { width: 100%; border-collapse: collapse; }
+    .bono-table th, .bono-table td { padding: 0.6rem 0.8rem; text-align: left; border-bottom: 1px solid var(--border); font-size: 0.9rem; }
+    .bono-table th { background: var(--green-bg); color: var(--green); font-size: 0.8rem; text-transform: uppercase; }
+    .bono-table tr:last-child td { border-bottom: none; }
+    .bono-table .precio { font-weight: 700; }
+    .bono-table .descuento { color: var(--accent); font-weight: 600; font-size: 0.85rem; }
+    .bono-table .btn { padding: 0.35rem 0.9rem; font-size: 0.8rem; }
 
     /* HOW IT WORKS */
     .steps { display: grid; grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); gap: 1.5rem; }
@@ -89,113 +128,295 @@
 <nav>
   <div class="logo">🌿 Común</div>
   <ul>
-    <li><a href="#explorar">Explorar</a></li>
-    <li><a href="#mercado">Mercado</a></li>
+    <li><a href="#financiacion">En financiación</a></li>
+    <li><a href="#marcha">En marcha</a></li>
     <li><a href="#como">Cómo funciona</a></li>
     <li><a href="#">Mi Cartera</a></li>
   </ul>
 </nav>
 
 <div class="hero">
-  <h1>Financia bienes comunes.<br>Obtén derecho de uso.</h1>
-  <p>Compra un bono de uso sobre un bien común. Úsalo, votá en asamblea, y transfiérelo cuando quieras.</p>
-  <button class="btn btn-primary">Explorar proyectos</button>
-  <button class="btn btn-outline">Cómo funciona</button>
+  <h1>Poniendo los comunes en marcha</h1>
+  <p>Bienes comunes fuera del mercado, para siempre. Sin deuda, sin equity, sin vencimiento.</p>
 </div>
 
-<section id="explorar">
-  <h2>Proyectos activos</h2>
-  <p class="subtitle">Cada bono da derecho de uso fraccionado sobre un bien común gestionado por la comunidad.</p>
+<!-- DESCRIPCIÓN GENERAL -->
+<section id="modelo">
+  <div class="descripcion">
+    <h2>¿Qué es Común?</h2>
+    <p>
+      <span class="destacado">Común</span> es una plataforma que pone bienes comunes —viviendas, huertas, talleres, energía— en propiedad comunitaria permanente, financiados mediante <span class="destacado">bonos de uso fraccionado</span> (use-credit obligations).
+    </p>
+    <p>
+      No es una inversión financiera. No es alquilar. Es un <span class="destacado">derecho de uso permanente</span> que se compra con descuento, se transfiere y se conserva. Los bonos no vencen: son una reclamación sobre el uso del bien, para siempre.
+    </p>
+    <p>
+      La gobernanza es por <span class="destacado">grupos de miembros</span> (inquilinos, inversores, gestores y custodios con voto de veto), no por cabeza ni por bono.
+    </p>
+  </div>
+
+  <!-- SELECTOR DE ROL -->
+  <div class="roles">
+    <div class="role-card">
+      <div class="emoji">💰</div>
+      <h3>Inversor</h3>
+      <p>Financio un bien común comprando bonos con descuento. Mi retorno: la renta baja con el tiempo a medida que soy repagado.</p>
+      <button class="btn btn-primary">Ver proyectos</button>
+    </div>
+    <div class="role-card">
+      <div class="emoji">🔑</div>
+      <h3>Usuario / Inquilino</h3>
+      <p>Acceso permanente a un bien común: vivienda, parcela, espacio de trabajo, energía. Con seguridad de tenencia.</p>
+      <button class="btn btn-primary">Explorar uso</button>
+    </div>
+    <div class="role-card">
+      <div class="emoji">⚙️</div>
+      <h3>Gestor / Custodio</h3>
+      <p>Mantengo el bien y velamos por que nunca salga del común. Los custodios tienen voto de veto.</p>
+      <button class="btn btn-primary">Gestionar mi común</button>
+    </div>
+  </div>
+
+  <!-- SECCIÓN GRUPOS -->
+  <div class="grupos">
+    <h3>¿Quieres poner en marcha tu común?</h3>
+    <p>
+      Si ya tienes un grupo, una asociación o una comunidad con un bien en mente —una vivienda, una parcela, un local, un solar—, podemos ayudarte a estructurarlo como proyecto de bonos de uso y financiarlo con la comunidad.
+    </p>
+    <button class="btn btn-primary">Crear mi común</button>
+  </div>
+</section>
+
+<!-- PROYECTOS EN FASE DE FINANCIACIÓN -->
+<section id="financiacion">
+  <h2>Proyectos en financiación</h2>
+  <p class="subtitle">Bonos disponibles antes de que el bien entre en uso. El descuento depende del momento y del riesgo.</p>
   <div class="grid">
     <div class="card">
-      <div class="emoji">🌿</div>
-      <h3>Huerta Común del Norte</h3>
-      <div class="meta">Madrid · 1.200 m² · 24 parcelas</div>
+      <div class="emoji">🏠</div>
+      <h3>Vivienda Común del Norte</h3>
+      <div class="meta">Madrid · 85 m² · 3 habitaciones</div>
       <div class="progress-bar"><div class="progress-fill" style="width:42%"></div></div>
-      <div class="meta">42% financiado · 120 bonos</div>
-      <div class="price">50 € / bono</div>
-      <span class="tag">1 parcela × 12 h/semana</span>
-      <span class="tag">Vence: Dic 2028</span>
+      <div class="meta">42% financiado · 120 bonos emitidos</div>
+      <div class="price">45 € / bono (m²/mes)</div>
+      <span class="tag">Descuento: −10%</span>
+      <span class="tag">Uso: 1 m²/mes</span>
     </div>
     <div class="card">
       <div class="emoji">☀️</div>
       <h3>Solar Comunitario La Cañada</h3>
       <div class="meta">Sevilla · 48 paneles · 24 kW</div>
       <div class="progress-bar"><div class="progress-fill" style="width:78%"></div></div>
-      <div class="meta">78% financiado · 60 bonos</div>
-      <div class="price">200 € / bono</div>
-      <span class="tag">2 kW asignados a tu vivienda</span>
-      <span class="tag">Vence: Jun 2030</span>
+      <div class="meta">78% financiado · 60 bonos emitidos</div>
+      <div class="price">180 € / bono (2 kW)</div>
+      <span class="tag">Descuento: −10%</span>
+      <span class="tag">Uso: 2 kW asignados</span>
     </div>
     <div class="card">
-      <div class="emoji">🏠</div>
+      <div class="emoji">🏢</div>
       <h3>Coworking Barrio Sur</h3>
       <div class="meta">Valencia · 80 m² · 20 puestos</div>
       <div class="progress-bar"><div class="progress-fill" style="width:15%"></div></div>
-      <div class="meta">15% financiado · 200 bonos</div>
-      <div class="price">25 € / bono</div>
-      <span class="tag">4 h/semana de uso</span>
-      <span class="tag">Vence: Mar 2027</span>
+      <div class="meta">15% financiado · 200 bonos emitidos</div>
+      <div class="price">22 € / bono (4 h/sem)</div>
+      <span class="tag">Descuento: −10%</span>
+      <span class="tag">Uso: 4 h/semana</span>
     </div>
     <div class="card">
       <div class="emoji">🚲</div>
       <h3>Taller Común de Bicis</h3>
       <div class="meta">Bilbao · 60 m² · Herramientas completas</div>
       <div class="progress-bar"><div class="progress-fill" style="width:63%"></div></div>
-      <div class="meta">63% financiado · 80 bonos</div>
-      <div class="price">80 € / bono</div>
-      <span class="tag">6 h/mes de uso</span>
-      <span class="tag">Vence: Sep 2029</span>
+      <div class="meta">63% financiado · 80 bonos emitidos</div>
+      <div class="price">72 € / bono (6 h/mes)</div>
+      <span class="tag">Descuento: −10%</span>
+      <span class="tag">Uso: 6 h/mes</span>
     </div>
   </div>
 </section>
 
-<section id="mercado">
-  <h2>Mercado secundario</h2>
-  <p class="subtitle">Vende o compra bonos de uso. El comprador hereda el mismo derecho.</p>
-  <table>
-    <thead>
-      <tr><th>Proyecto</th><th>Bono</th><th>Precio</th><th>Vence</th><th></th></tr>
-    </thead>
-    <tbody>
-      <tr><td>🌿 Huerta Norte</td><td>1 × 50 €</td><td><strong>52 €</strong></td><td>12/2028</td><td><button class="btn btn-primary" style="padding:0.4rem 1rem;font-size:0.85rem">Comprar</button></td></tr>
-      <tr><td>🌿 Huerta Norte</td><td>1 × 50 €</td><td><strong>50 €</strong></td><td>12/2028</td><td><button class="btn btn-primary" style="padding:0.4rem 1rem;font-size:0.85rem">Comprar</button></td></tr>
-      <tr><td>☀️ Solar Cañada</td><td>1 × 200 €</td><td><strong>210 €</strong></td><td>06/2030</td><td><button class="btn btn-primary" style="padding:0.4rem 1rem;font-size:0.85rem">Comprar</button></td></tr>
-      <tr><td>🏠 Coworking Sur</td><td>2 × 25 €</td><td><strong>48 €</strong></td><td>03/2027</td><td><button class="btn btn-primary" style="padding:0.4rem 1rem;font-size:0.85rem">Comprar</button></td></tr>
-      <tr><td>🚲 Taller Bici</td><td>1 × 80 €</td><td><strong>80 €</strong></td><td>09/2029</td><td><button class="btn btn-primary" style="padding:0.4rem 1rem;font-size:0.85rem">Comprar</button></td></tr>
-    </tbody>
-  </table>
+<!-- PROYECTOS EN MARCHA -->
+<section id="marcha">
+  <h2>Proyectos en marcha</h2>
+  <p class="subtitle">Bienes ya en uso comunitario. El mercado de bonos permite transferir derechos de uso.</p>
+
+  <!-- PROYECTO 1: VIVIENDA -->
+  <div class="proyecto-bloque">
+    <h3>🏠 Vivienda Común del Norte</h3>
+    <div class="meta">Madrid · 85 m² · 3 habitaciones · En el común desde 2025</div>
+    <div class="desc">
+      Vivienda en propiedad comunitaria permanente. La renta se reduce progresivamente a medida que los inversores son repagados, hasta un nivel mínimo de mantenimiento.
+    </div>
+    <div class="bonos-header">Bonos disponibles</div>
+    <table class="bono-table">
+      <thead>
+        <tr><th>Bono</th><th>Unidad de uso</th><th>Precio</th><th>Descuento</th><th></th></tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>1 bono</td>
+          <td>1 m²/mes de uso</td>
+          <td class="precio">45 €</td>
+          <td class="descuento">−10%</td>
+          <td><button class="btn btn-primary">Comprar</button></td>
+        </tr>
+        <tr>
+          <td>1 bono</td>
+          <td>1 m²/mes de uso</td>
+          <td class="precio">48 €</td>
+          <td class="descuento">−5%</td>
+          <td><button class="btn btn-primary">Comprar</button></td>
+        </tr>
+        <tr>
+          <td>2 bonos</td>
+          <td>2 m²/mes de uso</td>
+          <td class="precio">95 €</td>
+          <td class="descuento">−5%</td>
+          <td><button class="btn btn-primary">Comprar</button></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <!-- PROYECTO 2: SOLAR -->
+  <div class="proyecto-bloque">
+    <h3>☀️ Solar Comunitario La Cañada</h3>
+    <div class="meta">Sevilla · 48 paneles · 24 kW · En el común desde 2024</div>
+    <div class="desc">
+      Energía solar comunitaria. Los bonos están denominados en kWh y se canjean como pago de la factura eléctrica. La infraestructura es propiedad de la comunidad.
+    </div>
+    <div class="bonos-header">Bonos disponibles</div>
+    <table class="bono-table">
+      <thead>
+        <tr><th>Bono</th><th>Unidad de uso</th><th>Precio</th><th>Descuento</th><th></th></tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>1 bono</td>
+          <td>2 kW asignados</td>
+          <td class="precio">180 €</td>
+          <td class="descuento">−10%</td>
+          <td><button class="btn btn-primary">Comprar</button></td>
+        </tr>
+        <tr>
+          <td>1 bono</td>
+          <td>1 kW asignado</td>
+          <td class="precio">95 €</td>
+          <td class="descuento">−5%</td>
+          <td><button class="btn btn-primary">Comprar</button></td>
+        </tr>
+        <tr>
+          <td>1 bono</td>
+          <td>1 kW asignado</td>
+          <td class="precio">100 €</td>
+          <td class="descuento">0%</td>
+          <td><button class="btn btn-primary">Comprar</button></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <!-- PROYECTO 3: COWORKING -->
+  <div class="proyecto-bloque">
+    <h3>🏢 Coworking Barrio Sur</h3>
+    <div class="meta">Valencia · 80 m² · 20 puestos · En el común desde 2026</div>
+    <div class="desc">
+      Espacio de trabajo comunitario. Bonos denominados en horas de uso. El espacio no se vende fuera del común.
+    </div>
+    <div class="bonos-header">Bonos disponibles</div>
+    <table class="bono-table">
+      <thead>
+        <tr><th>Bono</th><th>Unidad de uso</th><th>Precio</th><th>Descuento</th><th></th></tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>1 bono</td>
+          <td>4 h/semana</td>
+          <td class="precio">22 €</td>
+          <td class="descuento">−10%</td>
+          <td><button class="btn btn-primary">Comprar</button></td>
+        </tr>
+        <tr>
+          <td>1 bono</td>
+          <td>4 h/semana</td>
+          <td class="precio">24 €</td>
+          <td class="descuento">−5%</td>
+          <td><button class="btn btn-primary">Comprar</button></td>
+        </tr>
+        <tr>
+          <td>2 bonos</td>
+          <td>8 h/semana</td>
+          <td class="precio">48 €</td>
+          <td class="descuento">−5%</td>
+          <td><button class="btn btn-primary">Comprar</button></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <!-- PROYECTO 4: TALLER -->
+  <div class="proyecto-bloque">
+    <h3>🚲 Taller Común de Bicis</h3>
+    <div class="meta">Bilbao · 60 m² · Herramientas completas · En el común desde 2025</div>
+    <div class="desc">
+      Taller de reparaciones comunitario. Bonos por horas de uso del espacio y herramientas.
+    </div>
+    <div class="bonos-header">Bonos disponibles</div>
+    <table class="bono-table">
+      <thead>
+        <tr><th>Bono</th><th>Unidad de uso</th><th>Precio</th><th>Descuento</th><th></th></tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>1 bono</td>
+          <td>6 h/mes</td>
+          <td class="precio">72 €</td>
+          <td class="descuento">−10%</td>
+          <td><button class="btn btn-primary">Comprar</button></td>
+        </tr>
+        <tr>
+          <td>1 bono</td>
+          <td>6 h/mes</td>
+          <td class="precio">76 €</td>
+          <td class="descuento">−5%</td>
+          <td><button class="btn btn-primary">Comprar</button></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
 </section>
 
+<!-- CÓMO FUNCIONA -->
 <section id="como">
   <h2>Cómo funciona</h2>
-  <p class="subtitle">No es deuda. No es equity. Es un derecho de uso fraccionado y transferible.</p>
+  <p class="subtitle">No es deuda. No es equity. Es un derecho de uso permanente, transferible, sin vencimiento.</p>
   <div class="steps">
     <div class="step">
       <div class="num">1</div>
       <h4>Elige un proyecto</h4>
-      <p>Explora bienes comunes en tu zona: huertas, solares, talleres, coworkings.</p>
+      <p>Viviendas, energía, espacios de trabajo, talleres — bienes en propiedad comunitaria permanente.</p>
     </div>
     <div class="step">
       <div class="num">2</div>
-      <h4>Compra bonos de uso</h4>
-      <p>Cada bono da una cuota de uso del bien + 1 voto en asamblea.</p>
+      <h4>Compra bonos con descuento</h4>
+      <p>Cada bono da una cuota de uso del bien. Se emiten con descuento (máx. 10%) según el riesgo y el momento.</p>
     </div>
     <div class="step">
       <div class="num">3</div>
       <h4>Usa y participa</h4>
-      <p>Accede al bien según tu cuota. Vota en asamblea trimestral.</p>
+      <p>Accede al bien según tu cuota. Participas en la gobernanza por grupos: inquilinos, inversores, gestores y custodios (veto).</p>
     </div>
     <div class="step">
       <div class="num">4</div>
-      <h4>Transfiere o recupera</h4>
-      <p>Vende tu bono en el mercado secundario o recupera el 100% al vencimiento.</p>
+      <h4>Transfiere o conserva</h4>
+      <p>Los bonos no vencen. Puedes transferirlos a otro miembro o conservarlos como almacén de valor. El bien nunca sale del común.</p>
     </div>
   </div>
 </section>
 
 <footer>
   <p>Común · Mockup conceptual · No es un producto financiero real</p>
+  <p>Inspirado en Stroud Housing Commons, Use-Credit Obligations (Chris Cook / Island Power) y Mutual Credit Services.</p>
 </footer>
 
 </body>
