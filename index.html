@@ -20,6 +20,8 @@
     body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; background: var(--bg); color: var(--text); line-height: 1.6; }
     a { color: var(--green); text-decoration: none; }
     a:hover { text-decoration: underline; }
+    a.btn { text-decoration: none; }
+    a.btn:hover { text-decoration: none; }
 
     /* NAV */
     nav {
@@ -79,7 +81,7 @@
     .grupos p { font-size: 1rem; color: var(--text); max-width: 560px; margin: 0 auto 1.5rem; }
     .grupos .btn { margin-left: 0; }
 
-    /* CARDS GRID — PROYECTOS EN FASE DE FINANCIACIÓN */
+    /* CARDS GRID */
     .grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 1.5rem; }
     .card {
       background: var(--card); border: 1px solid var(--border); border-radius: 12px;
@@ -136,8 +138,8 @@
 </nav>
 
 <div class="hero">
-  <h1>Ni público, ni privado, son bienes comunales</h1>
-  <p>acceso y/o uso asequible (a precio de coste) &nbsp;|&nbsp; retorno a la inversión (sin deuda ni equity) &nbsp;|&nbsp; gobernanza colectiva</p>
+  <h1>Ni público, ni privado, sin bienes comunales</h1>
+  <p>acceso/use asequible (precio de coste) &nbsp;|&nbsp; retorno a la inversión (sin deuda ni equity) &nbsp;|&nbsp; gobernanza colectiva</p>
 </div>
 
 <!-- DESCRIPCIÓN GENERAL -->
@@ -158,19 +160,19 @@
       <div class="emoji">💰</div>
       <h3>Invierte</h3>
       <p>Financia bienes comunales con gran demanda comprando bonos de uso con descuento y vendiéndolos cuando quieras.</p>
-      <button class="btn btn-primary">Ver proyectos</button>
+      <a href="#financiacion" class="btn btn-primary">Ver proyectos</a>
     </div>
     <div class="role-card">
       <div class="emoji">🔑</div>
       <h3>Usuarias</h3>
       <p>Acceso ilimitado a bienes comunales (vivienda, energía, coworking, trastero) de calidad y asequibles.</p>
-      <button class="btn btn-primary">Ver proyectos en marcha</button>
+      <a href="#marcha" class="btn btn-primary">Ver proyectos en marcha</a>
     </div>
     <div class="role-card">
       <div class="emoji">⚙️</div>
       <h3>Administra</h3>
       <p>Trabaja para el común manteniéndolo y gestionando su día a día.</p>
-      <button class="btn btn-primary">Explora vacantes</button>
+      <a href="#" class="btn btn-primary">Explora vacantes</a>
     </div>
   </div>
 
