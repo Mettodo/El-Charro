@@ -98,6 +98,7 @@
     .progress-fill { height: 100%; background: var(--green); border-radius: 4px; }
     .card .price { font-weight: 700; font-size: 1.1rem; margin-top: 0.5rem; }
     .card .tag { display: inline-block; font-size: 0.75rem; background: var(--green-bg); color: var(--green); padding: 0.2rem 0.6rem; border-radius: 4px; margin-top: 0.5rem; margin-right: 0.3rem; }
+    .card .acciones { margin-top: 1rem; }
 
     /* PROYECTOS EN MARCHA */
     .proyecto-bloque {
@@ -108,7 +109,7 @@
     .proyecto-bloque .meta { font-size: 0.9rem; color: var(--muted); margin-bottom: 1rem; }
     .proyecto-bloque .desc { font-size: 0.95rem; margin-bottom: 1.5rem; }
     .proyecto-bloque .bonos-header { font-size: 1rem; font-weight: 600; color: var(--text); margin-bottom: 0.8rem; }
-    .proyecto-bloque .acciones { display: flex; gap: 0.75rem; margin-top: 1.5rem; flex-wrap: wrap; }
+    .proyecto-bloque .acciones { display: flex; gap: 0.75rem; margin-bottom: 1.5rem; flex-wrap: wrap; }
 
     .bono-table { width: 100%; border-collapse: collapse; }
     .bono-table th, .bono-table td { padding: 0.6rem 0.8rem; text-align: left; border-bottom: 1px solid var(--border); font-size: 0.9rem; }
@@ -256,6 +257,7 @@
       <div class="price">1 350 € / bono (1 m² trastero)</div>
       <span class="tag">Descuento: −10%</span>
       <span class="tag">Uso: 1 m² de almacenaje</span>
+      <div class="acciones"><button class="btn btn-primary btn-sm">Financiar</button></div>
     </div>
     <div class="card">
       <div class="emoji">🏔️</div>
@@ -266,6 +268,7 @@
       <div class="price">1 080 € / bono (acceso ilimitado)</div>
       <span class="tag">Descuento: −10%</span>
       <span class="tag">Uso: préstamo ilimitado de material</span>
+      <div class="acciones"><button class="btn btn-primary btn-sm">Financiar</button></div>
     </div>
     <div class="card">
       <div class="emoji">🧗</div>
@@ -276,6 +279,7 @@
       <div class="price">1 800 € / bono (8 h/mes de escalada)</div>
       <span class="tag">Descuento: −10%</span>
       <span class="tag">Uso: 8 h/mes</span>
+      <div class="acciones"><button class="btn btn-primary btn-sm">Financiar</button></div>
     </div>
     <div class="card">
       <div class="emoji">🍲</div>
@@ -286,6 +290,7 @@
       <div class="price">2 700 € / bono (2 h/sem de cocina)</div>
       <span class="tag">Descuento: −10%</span>
       <span class="tag">Uso: 2 h/semana</span>
+      <div class="acciones"><button class="btn btn-primary btn-sm">Financiar</button></div>
     </div>
   </div>
 </section>
@@ -301,6 +306,10 @@
     <div class="meta">Madrid · 85 m² · 3 habitaciones · En el común desde 2025</div>
     <div class="desc">
       Vivienda en propiedad comunitaria permanente. La cuota de uso se reduce progresivamente a medida que los bonos se repagan, hasta un nivel mínimo de mantenimiento.
+    </div>
+    <div class="acciones">
+      <a href="#" class="btn btn-outline btn-sm">Saber más</a>
+      <a href="#" class="btn btn-outline btn-sm">Contacto</a>
     </div>
     <div class="bonos-header">Bonos disponibles</div>
     <table class="bono-table">
@@ -334,10 +343,6 @@
         </tr>
       </tbody>
     </table>
-    <div class="acciones">
-      <a href="#" class="btn btn-outline btn-sm">Saber más</a>
-      <a href="#" class="btn btn-outline btn-sm">Contacto</a>
-    </div>
   </div>
 
   <!-- PROYECTO 2: SOLAR -->
@@ -346,6 +351,10 @@
     <div class="meta">Sevilla · 48 paneles · 24 kW · En el común desde 2024</div>
     <div class="desc">
       Energía solar comunitaria. Los bonos están denominados en kW de capacidad instalada y dan derecho a la energía generada (~1 200 kWh/año por kW). La infraestructura es propiedad de la comunidad.
+    </div>
+    <div class="acciones">
+      <a href="#" class="btn btn-outline btn-sm">Saber más</a>
+      <a href="#" class="btn btn-outline btn-sm">Contacto</a>
     </div>
     <div class="bonos-header">Bonos disponibles</div>
     <table class="bono-table">
@@ -379,10 +388,6 @@
         </tr>
       </tbody>
     </table>
-    <div class="acciones">
-      <a href="#" class="btn btn-outline btn-sm">Saber más</a>
-      <a href="#" class="btn btn-outline btn-sm">Contacto</a>
-    </div>
   </div>
 
   <!-- PROYECTO 3: COWORKING -->
@@ -391,6 +396,10 @@
     <div class="meta">Valencia · 80 m² · 20 puestos · En el común desde 2026</div>
     <div class="desc">
       Espacio de trabajo comunitario. Bonos denominados en horas de uso por semana. El espacio no se vende fuera del común.
+    </div>
+    <div class="acciones">
+      <a href="#" class="btn btn-outline btn-sm">Saber más</a>
+      <a href="#" class="btn btn-outline btn-sm">Contacto</a>
     </div>
     <div class="bonos-header">Bonos disponibles</div>
     <table class="bono-table">
@@ -424,10 +433,6 @@
         </tr>
       </tbody>
     </table>
-    <div class="acciones">
-      <a href="#" class="btn btn-outline btn-sm">Saber más</a>
-      <a href="#" class="btn btn-outline btn-sm">Contacto</a>
-    </div>
   </div>
 
   <!-- PROYECTO 4: TALLER -->
@@ -436,6 +441,10 @@
     <div class="meta">Bilbao · 60 m² · Herramientas completas · En el común desde 2025</div>
     <div class="desc">
       Taller de reparaciones comunitario. Bonos por horas de uso del espacio y herramientas.
+    </div>
+    <div class="acciones">
+      <a href="#" class="btn btn-outline btn-sm">Saber más</a>
+      <a href="#" class="btn btn-outline btn-sm">Contacto</a>
     </div>
     <div class="bonos-header">Bonos disponibles</div>
     <table class="bono-table">
@@ -461,10 +470,6 @@
         </tr>
       </tbody>
     </table>
-    <div class="acciones">
-      <a href="#" class="btn btn-outline btn-sm">Saber más</a>
-      <a href="#" class="btn btn-outline btn-sm">Contacto</a>
-    </div>
   </div>
 </section>
 
