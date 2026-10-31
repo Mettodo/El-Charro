@@ -30,6 +30,7 @@
       position: sticky; top: 0; z-index: 100;
     }
     nav .logo { font-size: 1.4rem; font-weight: 700; color: var(--green); }
+    nav .logo:hover { text-decoration: none; }
     nav ul { display: flex; gap: 1.5rem; list-style: none; }
     nav ul a { color: var(--text); font-size: 0.95rem; }
     nav ul a:hover { color: var(--green); text-decoration: none; }
@@ -114,12 +115,54 @@
     .bono-table .descuento { color: var(--accent); font-weight: 600; font-size: 0.85rem; }
     .bono-table .btn { padding: 0.35rem 0.9rem; font-size: 0.8rem; }
 
-    /* HOW IT WORKS */
+    /* HOW IT WORKS — TABS */
+    .tabs { display: flex; gap: 0.5rem; margin-bottom: 2rem; flex-wrap: wrap; }
+    .tab-btn {
+      padding: 0.6rem 1.4rem; border-radius: 8px; border: 2px solid var(--border);
+      background: var(--card); font-weight: 600; font-size: 0.95rem; cursor: pointer;
+      transition: all 0.2s;
+    }
+    .tab-btn.active { background: var(--green); color: #fff; border-color: var(--green); }
+    .tab-btn:hover:not(.active) { border-color: var(--green); color: var(--green); }
+    .tab-content { display: none; }
+    .tab-content.active { display: block; }
+
     .steps { display: grid; grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); gap: 1.5rem; }
     .step { text-align: center; padding: 1.5rem; }
     .step .num { width: 40px; height: 40px; border-radius: 50%; background: var(--green); color: #fff; display: flex; align-items: center; justify-content: center; font-weight: 700; margin: 0 auto 1rem; }
     .step h4 { margin-bottom: 0.3rem; }
     .step p { font-size: 0.9rem; color: var(--muted); }
+
+    /* VACANTES */
+    .vacante-card {
+      background: var(--card); border: 1px solid var(--border); border-radius: 12px;
+      padding: 1.5rem; margin-bottom: 1rem; display: flex; align-items: center;
+      justify-content: space-between; flex-wrap: wrap; gap: 1rem;
+    }
+    .vacante-card .info h4 { font-size: 1.1rem; color: var(--green); margin-bottom: 0.2rem; }
+    .vacante-card .info .meta { font-size: 0.85rem; color: var(--muted); }
+    .vacante-card .info .rol { font-size: 0.9rem; margin-top: 0.4rem; }
+    .vacante-card .btn { white-space: nowrap; }
+
+    /* IDEACIÓN */
+    .ideacion-form {
+      background: var(--card); border: 1px solid var(--border); border-radius: 16px;
+      padding: 2.5rem; max-width: 640px; margin: 0 auto;
+    }
+    .ideacion-form h3 { color: var(--green); margin-bottom: 0.5rem; }
+    .ideacion-form p { font-size: 0.95rem; color: var(--muted); margin-bottom: 1.5rem; }
+    .form-group { margin-bottom: 1.2rem; }
+    .form-group label { display: block; font-weight: 600; font-size: 0.9rem; margin-bottom: 0.4rem; }
+    .form-group input, .form-group select, .form-group textarea {
+      width: 100%; padding: 0.7rem 1rem; border: 1px solid var(--border); border-radius: 8px;
+      font-size: 0.95rem; font-family: inherit; background: var(--bg);
+    }
+    .form-group input:focus, .form-group select:focus, .form-group textarea:focus {
+      outline: none; border-color: var(--green); box-shadow: 0 0 0 3px rgba(45,106,79,0.1);
+    }
+    .form-group textarea { resize: vertical; min-height: 80px; }
+    .form-divider { border: none; border-top: 1px solid var(--border); margin: 2rem 0; }
+    .form-section-title { font-size: 1rem; font-weight: 700; color: var(--text); margin-bottom: 1rem; }
 
     /* FOOTER */
     footer { text-align: center; padding: 2rem; color: var(--muted); font-size: 0.85rem; border-top: 1px solid var(--border); }
@@ -128,12 +171,12 @@
 <body>
 
 <nav>
-  <div class="logo">🌿 Común</div>
+  <a href="#" class="logo">🌿 Común</a>
   <ul>
     <li><a href="#financiacion">En financiación</a></li>
     <li><a href="#marcha">En marcha</a></li>
     <li><a href="#como">Cómo funciona</a></li>
-    <li><a href="#">Mi Cartera</a></li>
+    <li><a href="#ideacion">En ideación</a></li>
   </ul>
 </nav>
 
@@ -172,7 +215,7 @@
       <div class="emoji">⚙️</div>
       <h3>Administra</h3>
       <p>Trabaja para el común manteniéndolo y gestionando su día a día.</p>
-      <a href="#" class="btn btn-primary">Explora vacantes</a>
+      <a href="#vacantes" class="btn btn-primary">Explora vacantes</a>
     </div>
   </div>
 
@@ -182,7 +225,7 @@
     <p>
       Si ya tienes un grupo, una asociación o una comunidad con un bien en mente —una vivienda, una parcela, un local, un solar—, podemos ayudarte a estructurarlo como proyecto de bonos de uso y financiarlo con la comunidad.
     </p>
-    <button class="btn btn-primary">Crear mi común</button>
+    <a href="#ideacion" class="btn btn-primary">Crear mi común</a>
   </div>
 </section>
 
@@ -385,31 +428,197 @@
   </div>
 </section>
 
+<!-- VACANTES PARA ADMINISTRADORAS -->
+<section id="vacantes">
+  <h2>Vacantes para administradoras</h2>
+  <p class="subtitle">Proyectos en marcha que buscan personas para gestionar su día a día. Trabaja para el común y disfruta la vida comunal.</p>
+
+  <div class="vacante-card">
+    <div class="info">
+      <h4>🏠 Vivienda Común del Norte</h4>
+      <div class="meta">Madrid · 85 m² · 3 habitaciones</div>
+      <div class="rol">Rol: Coordinadora de mantenimiento y comunidad (4 h/sem)</div>
+    </div>
+    <a href="#" class="btn btn-primary">Postular</a>
+  </div>
+
+  <div class="vacante-card">
+    <div class="info">
+      <h4>☀️ Solar Comunitario La Cañada</h4>
+      <div class="meta">Sevilla · 48 paneles · 24 kW</div>
+      <div class="rol">Rol: Técnica de monitorización y facturación (6 h/sem)</div>
+    </div>
+    <a href="#" class="btn btn-primary">Postular</a>
+  </div>
+
+  <div class="vacante-card">
+    <div class="info">
+      <h4>🏢 Coworking Barrio Sur</h4>
+      <div class="meta">Valencia · 80 m² · 20 puestos</div>
+      <div class="rol">Rol: Gestora de espacio y comunidad (10 h/sem)</div>
+    </div>
+    <a href="#" class="btn btn-primary">Postular</a>
+  </div>
+
+  <div class="vacante-card">
+    <div class="info">
+      <h4>🚲 Taller Común de Bicis</h4>
+      <div class="meta">Bilbao · 60 m² · Herramientas completas</div>
+      <div class="rol">Rol: Coordinadora de reservas y mantenimiento (5 h/sem)</div>
+    </div>
+    <a href="#" class="btn btn-primary">Postular</a>
+  </div>
+</section>
+
 <!-- CÓMO FUNCIONA -->
 <section id="como">
   <h2>Cómo funciona</h2>
   <p class="subtitle">No es deuda. No es equity. Es un derecho de uso permanente, transferible, sin vencimiento.</p>
-  <div class="steps">
-    <div class="step">
-      <div class="num">1</div>
-      <h4>Elige un proyecto</h4>
-      <p>Viviendas, energía, espacios de trabajo, talleres, trasteros — bienes en propiedad comunitaria permanente.</p>
+
+  <!-- TABS -->
+  <div class="tabs">
+    <button class="tab-btn active" onclick="switchTab('inversores')">💰 Inversores</button>
+    <button class="tab-btn" onclick="switchTab('usuarias')">🔑 Usuarias</button>
+    <button class="tab-btn" onclick="switchTab('admins')">⚙️ Admins</button>
+  </div>
+
+  <!-- TAB: INVERSORES -->
+  <div class="tab-content active" id="tab-inversores">
+    <div class="steps">
+      <div class="step">
+        <div class="num">1</div>
+        <h4>Elige un proyecto</h4>
+        <p>Viviendas, energía, espacios de trabajo, talleres, trasteros — bienes en propiedad comunitaria permanente.</p>
+      </div>
+      <div class="step">
+        <div class="num">2</div>
+        <h4>Compra bonos con descuento</h4>
+        <p>Cada bono da una cuota de uso del bien. Se emiten con descuento (máx. 10%) según el riesgo y el momento.</p>
+      </div>
+      <div class="step">
+        <div class="num">3</div>
+        <h4>Usa y participa</h4>
+        <p>Accede al bien según tu cuota. Participas en la gobernanza por consentimiento: usuarias, inversoras y administradoras.</p>
+      </div>
+      <div class="step">
+        <div class="num">4</div>
+        <h4>Transfiere o conserva</h4>
+        <p>Los bonos no vencen. Puedes transferirlos a otro miembro o conservarlos como almacén de valor. El bien nunca sale del común.</p>
+      </div>
     </div>
-    <div class="step">
-      <div class="num">2</div>
-      <h4>Compra bonos con descuento</h4>
-      <p>Cada bono da una cuota de uso del bien. Se emiten con descuento (máx. 10%) según el riesgo y el momento.</p>
+  </div>
+
+  <!-- TAB: USUARIAS -->
+  <div class="tab-content" id="tab-usuarias">
+    <div class="steps">
+      <div class="step">
+        <div class="num">1</div>
+        <h4>Elige el proyecto (o créalo)</h4>
+        <p>Explora los bienes comunales en marcha o en financiación, o propón uno nuevo desde "En ideación".</p>
+      </div>
+      <div class="step">
+        <div class="num">2</div>
+        <h4>Conecta con el grupo y conócelo</h4>
+        <p>Conoce a las personas que ya forman parte: usuarias, inversoras y administradoras. La gobernanza es por consentimiento.</p>
+      </div>
+      <div class="step">
+        <div class="num">3</div>
+        <h4>Compra bonos en el mercado o paga con €</h4>
+        <p>Adquiere bonos de uso en el mercado secundario o paga directamente en euros. Tu cuota de uso queda garantizada.</p>
+      </div>
+      <div class="step">
+        <div class="num">4</div>
+        <h4>Disfruta de la vida comunal</h4>
+        <p>Accede al bien, participa en las decisiones colectivas y vive en comunidad. Sin vencimiento, para siempre.</p>
+      </div>
     </div>
-    <div class="step">
-      <div class="num">3</div>
-      <h4>Usa y participa</h4>
-      <p>Accede al bien según tu cuota. Participas en la gobernanza por consentimiento: usuarias, inversoras y administradoras.</p>
+  </div>
+
+  <!-- TAB: ADMINS -->
+  <div class="tab-content" id="tab-admins">
+    <div class="steps">
+      <div class="step">
+        <div class="num">1</div>
+        <h4>Explora vacantes</h4>
+        <p>Mira qué proyectos en marcha buscan administradoras: coordinación, mantenimiento, gestión de reservas, facturación…</p>
+      </div>
+      <div class="step">
+        <div class="num">2</div>
+        <h4>Trabaja para el común y disfruta la vida comunal</h4>
+        <p>Trabaja para un bien comunal manteniéndolo y gestionando su día a día. A cambio, acceso al bien y vida en comunidad.</p>
+      </div>
     </div>
-    <div class="step">
-      <div class="num">4</div>
-      <h4>Transfiere o conserva</h4>
-      <p>Los bonos no vencen. Puedes transferirlos a otro miembro o conservarlos como almacén de valor. El bien nunca sale del común.</p>
+  </div>
+</section>
+
+<!-- EN IDEACIÓN -->
+<section id="ideacion">
+  <h2>En ideación</h2>
+  <p class="subtitle">¿Necesitas un bien comunal en tu vida? Dinos qué y dónde. O indica tu interés en los ya listados.</p>
+
+  <div class="ideacion-form">
+    <h3>Propón un bien comunal</h3>
+    <p>Cuéntanos qué tipo de bien comunal necesitas en tu vida y dónde. Se publica de forma abierta para que otras personas se sumen.</p>
+
+    <div class="form-group">
+      <label>Tipo de bien</label>
+      <select>
+        <option value="">Selecciona…</option>
+        <option>Vivienda</option>
+        <option>Energía (solar, eólica…)</option>
+        <option>Coworking / espacio de trabajo</option>
+        <option>Trastero / almacenaje</option>
+        <option>Taller / herramientas</option>
+        <option>Cocina comunitaria</option>
+        <option>Huerta / espacio verde</option>
+        <option>Material compartido (montaña, bici…)</option>
+        <option>Otro</option>
+      </select>
     </div>
+    <div class="form-group">
+      <label>¿Dónde? (ciudad / barrio)</label>
+      <input type="text" placeholder="Ej: Madrid, Lavapiés">
+    </div>
+    <div class="form-group">
+      <label>¿Qué necesitas? (opcional)</label>
+      <textarea placeholder="Describe brevemente el bien que necesitas, el tamaño, la frecuencia de uso…"></textarea>
+    </div>
+    <div class="form-group">
+      <label>Tu nombre (público)</label>
+      <input type="text" placeholder="Tu nombre o alias">
+    </div>
+    <div class="form-group">
+      <label>Contacto (email o Telegram, opcional)</label>
+      <input type="text" placeholder="Para que el grupo pueda contactarte">
+    </div>
+    <button class="btn btn-primary" style="width:100%">Publicar mi propuesta</button>
+
+    <hr class="form-divider">
+
+    <div class="form-section-title">Estoy interesada en un bien ya listado</div>
+    <div class="form-group">
+      <label>Proyecto</label>
+      <select>
+        <option value="">Selecciona…</option>
+        <option>📦 Trasteros Comunitarios El Rastro — Madrid</option>
+        <option>🏔️ Biblioteca de Material de Montaña — Granada</option>
+        <option>🧗 Rocódromo Común — Zaragoza</option>
+        <option>🍲 Cocina Comunitaria La Huerta — Málaga</option>
+        <option>🏠 Vivienda Común del Norte — Madrid</option>
+        <option>☀️ Solar Comunitario La Cañada — Sevilla</option>
+        <option>🏢 Coworking Barrio Sur — Valencia</option>
+        <option>🚲 Taller Común de Bicis — Bilbao</option>
+      </select>
+    </div>
+    <div class="form-group">
+      <label>Tu nombre (público)</label>
+      <input type="text" placeholder="Tu nombre o alias">
+    </div>
+    <div class="form-group">
+      <label>Mensaje para el grupo (opcional)</label>
+      <textarea placeholder="Cuéntales por qué te interesa, qué uso harías…"></textarea>
+    </div>
+    <button class="btn btn-primary" style="width:100%">Publicar mi interés</button>
   </div>
 </section>
 
@@ -417,6 +626,15 @@
   <p>Común · Mockup conceptual · No es un producto financiero real</p>
   <p>Inspirado en Stroud Housing Commons, Use-Credit Obligations (Chris Cook / Island Power) y Mutual Credit Services.</p>
 </footer>
+
+<script>
+function switchTab(name) {
+  document.querySelectorAll('.tab-content').forEach(el => el.classList.remove('active'));
+  document.querySelectorAll('.tab-btn').forEach(el => el.classList.remove('active'));
+  document.getElementById('tab-' + name).classList.add('active');
+  event.target.classList.add('active');
+}
+</script>
 
 </body>
 </html>   
