@@ -31,9 +31,15 @@
     }
     nav .logo { font-size: 1.4rem; font-weight: 700; color: var(--green); }
     nav .logo:hover { text-decoration: none; }
-    nav ul { display: flex; gap: 1.5rem; list-style: none; }
+    nav ul { display: flex; gap: 1.5rem; list-style: none; align-items: center; }
     nav ul a { color: var(--text); font-size: 0.95rem; }
     nav ul a:hover { color: var(--green); text-decoration: none; }
+    #lang-toggle {
+      margin-left: 1rem; padding: 0.35rem 0.9rem; border-radius: 6px;
+      border: 2px solid var(--green); background: transparent; color: var(--green);
+      font-weight: 700; font-size: 0.85rem; cursor: pointer; transition: all 0.2s;
+    }
+    #lang-toggle:hover { background: var(--green); color: #fff; }
 
     /* HERO */
     .hero {
@@ -187,27 +193,28 @@
 <nav>
   <a href="#" class="logo">🌿 Común</a>
   <ul>
-    <li><a href="#financiacion">En financiación</a></li>
-    <li><a href="#marcha">En marcha</a></li>
-    <li><a href="#como">Cómo funciona</a></li>
-    <li><a href="#ideacion">En ideación</a></li>
+    <li><a href="#financiacion" data-i18n="nav.fund">En financiación</a></li>
+    <li><a href="#marcha" data-i18n="nav.progress">En marcha</a></li>
+    <li><a href="#como" data-i18n="nav.how">Cómo funciona</a></li>
+    <li><a href="#ideacion" data-i18n="nav.ideation">En ideación</a></li>
+    <li><button id="lang-toggle" onclick="toggleLang()">EN</button></li>
   </ul>
 </nav>
 
 <div class="hero">
-  <h1>Ni público, ni privado, sin bienes comunales</h1>
-  <p>acceso/use asequible (precio de coste) &nbsp;|&nbsp; retorno a la inversión (sin deuda ni equity) &nbsp;|&nbsp; gobernanza colectiva</p>
+  <h1 data-i18n="hero.title">Ni público, ni privado, sin bienes comunales</h1>
+  <p data-i18n="hero.sub">acceso/use asequible (precio de coste) &nbsp;|&nbsp; retorno a la inversión (sin deuda ni equity) &nbsp;|&nbsp; gobernanza colectiva</p>
 </div>
 
 <!-- DESCRIPCIÓN GENERAL -->
 <section id="modelo">
   <div class="descripcion">
-    <h2>¿Qué es Común?</h2>
+    <h2 data-i18n="model.title">¿Qué es Común?</h2>
     <p>
-      <span class="destacado">Común</span> es la plataforma para poner bienes comunes —viviendas, huertas, talleres, energía— en propiedad comunitaria permanente, financiados de forma no extractiva.
+      <span class="destacado" data-i18n="model.p1a">Común</span> <span data-i18n="model.p1b">es la plataforma para poner bienes comunes —viviendas, huertas, talleres, energía— en propiedad comunitaria permanente, financiados de forma no extractiva.</span>
     </p>
     <p>
-      <span class="destacado">Gobernanza por consentimiento</span> de todas las personas participantes: usuarias, inversoras y administradoras.
+      <span class="destacado" data-i18n="model.p2a">Gobernanza por consentimiento</span> <span data-i18n="model.p2b">de todas las personas participantes: usuarias, inversoras y administradoras.</span>
     </p>
   </div>
 
@@ -215,131 +222,127 @@
   <div class="roles">
     <div class="role-card">
       <div class="emoji">💰</div>
-      <h3>Invierte</h3>
-      <p>Financia bienes comunales con gran demanda. Compra bonos de uso con descuento y véndelos al precio que elijas y cuando quieras en el <a href="#marcha">mercado</a>.</p>
-      <a href="#financiacion" class="btn btn-primary">Ver proyectos</a>
+      <h3 data-i18n="role.invest.title">Invierte</h3>
+      <p data-i18n="role.invest.desc">Financia bienes comunales con gran demanda. Compra bonos de uso con descuento y véndelos al precio que elijas y cuando quieras en el <a href="#marcha" data-i18n="role.invest.market">mercado</a>.</p>
+      <a href="#financiacion" class="btn btn-primary" data-i18n="role.invest.btn">Ver proyectos</a>
     </div>
     <div class="role-card">
       <div class="emoji">🔑</div>
-      <h3>Usuarias</h3>
-      <p>Acceso ilimitado a bienes comunales (vivienda, energía, coworking, trastero) de calidad y asequibles.</p>
-      <a href="#marcha" class="btn btn-primary">Ver proyectos en marcha</a>
+      <h3 data-i18n="role.user.title">Usuarias</h3>
+      <p data-i18n="role.user.desc">Acceso ilimitado a bienes comunales (vivienda, energía, coworking, trastero) de calidad y asequibles.</p>
+      <a href="#marcha" class="btn btn-primary" data-i18n="role.user.btn">Ver proyectos en marcha</a>
     </div>
     <div class="role-card">
       <div class="emoji">⚙️</div>
-      <h3>Administra</h3>
-      <p>Trabaja para el común manteniéndolo y gestionando su día a día.</p>
-      <a href="#vacantes" class="btn btn-primary">Explora vacantes</a>
+      <h3 data-i18n="role.admin.title">Administra</h3>
+      <p data-i18n="role.admin.desc">Trabaja para el común manteniéndolo y gestionando su día a día.</p>
+      <a href="#vacantes" class="btn btn-primary" data-i18n="role.admin.btn">Explora vacantes</a>
     </div>
   </div>
 
   <!-- SECCIÓN GRUPOS -->
   <div class="grupos">
-    <h3>¿Quieres poner en marcha tu común?</h3>
-    <p>
-      Si ya tienes un grupo, una asociación o una comunidad con un bien en mente —una vivienda, una parcela, un local, un solar—, podemos ayudarte a estructurarlo como proyecto de bonos de uso y financiarlo con la comunidad.
-    </p>
-    <a href="#ideacion" class="btn btn-primary">Crear mi común</a>
+    <h3 data-i18n="groups.title">¿Quieres poner en marcha tu común?</h3>
+    <p data-i18n="groups.desc">Si ya tienes un grupo, una asociación o una comunidad con un bien en mente —una vivienda, una parcela, un local, un solar—, podemos ayudarte a estructurarlo como proyecto de bonos de uso y financiarlo con la comunidad.</p>
+    <a href="#ideacion" class="btn btn-primary" data-i18n="groups.btn">Crear mi común</a>
   </div>
 </section>
 
 <!-- PROYECTOS EN FASE DE FINANCIACIÓN -->
 <section id="financiacion">
-  <h2>Proyectos en financiación</h2>
-  <p class="subtitle">Bonos disponibles antes de que el bien entre en uso. El descuento depende del momento y del riesgo.</p>
+  <h2 data-i18n="fund.title">Proyectos en financiación</h2>
+  <p class="subtitle" data-i18n="fund.sub">Bonos disponibles antes de que el bien entre en uso. El descuento depende del momento y del riesgo.</p>
   <div class="grid">
     <div class="card">
       <div class="emoji">📦</div>
-      <h3>Trasteros Comunitarios El Rastro</h3>
-      <div class="meta">Madrid · 200 m² · 60 trasteros (1–6 m²)</div>
+      <h3 data-i18n="fund.c1.title">Trasteros Comunitarios El Rastro</h3>
+      <div class="meta" data-i18n="fund.c1.meta">Madrid · 200 m² · 60 trasteros (1–6 m²)</div>
       <div class="progress-bar"><div class="progress-fill" style="width:35%"></div></div>
-      <div class="meta">35% financiado · 85 bonos emitidos</div>
-      <div class="price">400 € / bono (1 m² trastero)</div>
-      <span class="tag">Descuento: −10%</span>
-      <span class="tag">Uso: 1 m² de almacenaje</span>
-      <div class="acciones"><button class="btn btn-primary btn-sm">Financiar</button></div>
+      <div class="meta" data-i18n="fund.c1.progress">35% financiado · 85 bonos emitidos</div>
+      <div class="price" data-i18n="fund.c1.price">400 € / bono (1 m² trastero)</div>
+      <span class="tag" data-i18n="fund.c1.disc">Descuento: −10%</span>
+      <span class="tag" data-i18n="fund.c1.use">Uso: 1 m² de almacenaje</span>
+      <div class="acciones"><button class="btn btn-primary btn-sm" data-i18n="fund.btn">Financiar</button></div>
     </div>
     <div class="card">
       <div class="emoji">🏔️</div>
-      <h3>Biblioteca de Material de Montaña</h3>
-      <div class="meta">Granada · 50 m² · ~200 artículos (tendas, crampones, arneses…)</div>
+      <h3 data-i18n="fund.c2.title">Biblioteca de Material de Montaña</h3>
+      <div class="meta" data-i18n="fund.c2.meta">Granada · 50 m² · ~200 artículos (tendas, crampones, arneses…)</div>
       <div class="progress-bar"><div class="progress-fill" style="width:52%"></div></div>
-      <div class="meta">52% financiado · 40 bonos emitidos</div>
-      <div class="price">600 € / bono (acceso ilimitado)</div>
-      <span class="tag">Descuento: −10%</span>
-      <span class="tag">Uso: préstamo ilimitado de material</span>
-      <div class="acciones"><button class="btn btn-primary btn-sm">Financiar</button></div>
+      <div class="meta" data-i18n="fund.c2.progress">52% financiado · 40 bonos emitidos</div>
+      <div class="price" data-i18n="fund.c2.price">600 € / bono (acceso ilimitado)</div>
+      <span class="tag" data-i18n="fund.c2.disc">Descuento: −10%</span>
+      <span class="tag" data-i18n="fund.c2.use">Uso: préstamo ilimitado de material</span>
+      <div class="acciones"><button class="btn btn-primary btn-sm" data-i18n="fund.btn">Financiar</button></div>
     </div>
     <div class="card">
       <div class="emoji">🧗</div>
-      <h3>Rocódromo Común</h3>
-      <div class="meta">Zaragoza · 120 m² · Pared 15 m · 80 vías</div>
+      <h3 data-i18n="fund.c3.title">Rocódromo Común</h3>
+      <div class="meta" data-i18n="fund.c3.meta">Zaragoza · 120 m² · Pared 15 m · 80 vías</div>
       <div class="progress-bar"><div class="progress-fill" style="width:22%"></div></div>
-      <div class="meta">22% financiado · 150 bonos emitidos</div>
-      <div class="price">1 000 € / bono (8 h/mes de escalada)</div>
-      <span class="tag">Descuento: −10%</span>
-      <span class="tag">Uso: 8 h/mes</span>
-      <div class="acciones"><button class="btn btn-primary btn-sm">Financiar</button></div>
+      <div class="meta" data-i18n="fund.c3.progress">22% financiado · 150 bonos emitidos</div>
+      <div class="price" data-i18n="fund.c3.price">1 000 € / bono (8 h/mes de escalada)</div>
+      <span class="tag" data-i18n="fund.c3.disc">Descuento: −10%</span>
+      <span class="tag" data-i18n="fund.c3.use">Uso: 8 h/mes</span>
+      <div class="acciones"><button class="btn btn-primary btn-sm" data-i18n="fund.btn">Financiar</button></div>
     </div>
     <div class="card">
       <div class="emoji">🍲</div>
-      <h3>Cocina Comunitaria La Huerta</h3>
-      <div class="meta">Málaga · 40 m² · Equipamiento completo · 6 fogones</div>
+      <h3 data-i18n="fund.c4.title">Cocina Comunitaria La Huerta</h3>
+      <div class="meta" data-i18n="fund.c4.meta">Málaga · 40 m² · Equipamiento completo · 6 fogones</div>
       <div class="progress-bar"><div class="progress-fill" style="width:68%"></div></div>
-      <div class="meta">68% financiado · 90 bonos emitidos</div>
-      <div class="price">500 € / bono (2 h/sem de cocina)</div>
-      <span class="tag">Descuento: −10%</span>
-      <span class="tag">Uso: 2 h/semana</span>
-      <div class="acciones"><button class="btn btn-primary btn-sm">Financiar</button></div>
+      <div class="meta" data-i18n="fund.c4.progress">68% financiado · 90 bonos emitidos</div>
+      <div class="price" data-i18n="fund.c4.price">500 € / bono (2 h/sem de cocina)</div>
+      <span class="tag" data-i18n="fund.c4.disc">Descuento: −10%</span>
+      <span class="tag" data-i18n="fund.c4.use">Uso: 2 h/semana</span>
+      <div class="acciones"><button class="btn btn-primary btn-sm" data-i18n="fund.btn">Financiar</button></div>
     </div>
   </div>
 </section>
 
 <!-- PROYECTOS EN MARCHA -->
 <section id="marcha">
-  <h2>Proyectos en marcha</h2>
-  <p class="subtitle">Bienes ya en uso comunitario. El mercado de bonos permite transferir derechos de uso.</p>
+  <h2 data-i18n="marcha.title">Proyectos en marcha</h2>
+  <p class="subtitle" data-i18n="marcha.sub">Bienes ya en uso comunitario. El mercado de bonos permite transferir derechos de uso.</p>
 
   <!-- PROYECTO 1: VIVIENDA -->
   <div class="proyecto-bloque">
-    <h3>🏠 Vivienda Común del Norte</h3>
-    <div class="meta">Madrid · 85 m² · 3 habitaciones · En el común desde 2025</div>
-    <div class="desc">
-      Vivienda en propiedad comunitaria permanente. La cuota de uso se reduce progresivamente a medida que los bonos se repagan, hasta un nivel mínimo de mantenimiento.
-    </div>
+    <h3 data-i18n="marcha.p1.title">🏠 Vivienda Común del Norte</h3>
+    <div class="meta" data-i18n="marcha.p1.meta">Madrid · 85 m² · 3 habitaciones · En el común desde 2025</div>
+    <div class="desc" data-i18n="marcha.p1.desc">Vivienda en propiedad comunitaria permanente. La cuota de uso se reduce progresivamente a medida que los bonos se repagan, hasta un nivel mínimo de mantenimiento.</div>
     <div class="acciones">
-      <a href="#" class="btn btn-outline btn-sm">Saber más</a>
-      <a href="#" class="btn btn-outline btn-sm">Contacto</a>
+      <a href="#" class="btn btn-outline btn-sm" data-i18n="marcha.more">Saber más</a>
+      <a href="#" class="btn btn-outline btn-sm" data-i18n="marcha.contact">Contacto</a>
     </div>
-    <div class="bonos-header">Bonos disponibles</div>
+    <div class="bonos-header" data-i18n="marcha.bonds">Bonos disponibles</div>
     <table class="bono-table">
       <thead>
-        <tr><th>Bono</th><th>Unidad de uso</th><th>Inversor</th><th>Precio</th><th>Descuento</th><th></th></tr>
+        <tr><th data-i18n="tbl.bond">Bono</th><th data-i18n="tbl.unit">Unidad de uso</th><th data-i18n="tbl.investor">Inversor</th><th data-i18n="tbl.price">Precio</th><th data-i18n="tbl.disc">Descuento</th><th></th></tr>
       </thead>
       <tbody>
         <tr>
-          <td>1 bono</td>
-          <td>1 m²/mes de uso</td>
+          <td data-i18n="tbl.1bond">1 bono</td>
+          <td data-i18n="marcha.p1.u1">1 m²/mes de uso</td>
           <td>Carlos G.</td>
           <td class="precio">1 080 €</td>
           <td class="descuento">−10%</td>
-          <td><button class="btn btn-primary">Comprar</button></td>
+          <td><button class="btn btn-primary" data-i18n="tbl.buy">Comprar</button></td>
         </tr>
         <tr>
-          <td>1 bono</td>
-          <td>1 m²/mes de uso</td>
+          <td data-i18n="tbl.1bond">1 bono</td>
+          <td data-i18n="marcha.p1.u1">1 m²/mes de uso</td>
           <td>Ana L.</td>
           <td class="precio">1 140 €</td>
           <td class="descuento">−5%</td>
-          <td><button class="btn btn-primary">Comprar</button></td>
+          <td><button class="btn btn-primary" data-i18n="tbl.buy">Comprar</button></td>
         </tr>
         <tr>
-          <td>2 bonos</td>
-          <td>2 m²/mes de uso</td>
+          <td data-i18n="tbl.2bonds">2 bonos</td>
+          <td data-i18n="marcha.p1.u2">2 m²/mes de uso</td>
           <td>Pedro M.</td>
           <td class="precio">2 200 €</td>
           <td class="descuento">−5%</td>
-          <td><button class="btn btn-primary">Comprar</button></td>
+          <td><button class="btn btn-primary" data-i18n="tbl.buy">Comprar</button></td>
         </tr>
       </tbody>
     </table>
@@ -347,44 +350,42 @@
 
   <!-- PROYECTO 2: SOLAR -->
   <div class="proyecto-bloque">
-    <h3>☀️ Solar Comunitario La Cañada</h3>
-    <div class="meta">Sevilla · 48 paneles · 24 kW · En el común desde 2024</div>
-    <div class="desc">
-      Energía solar comunitaria. Los bonos están denominados en kW de capacidad instalada y dan derecho a la energía generada (~1 200 kWh/año por kW ≈ 240 €/año a 0,2 €/kWh). La infraestructura es propiedad de la comunidad.
-    </div>
+    <h3 data-i18n="marcha.p2.title">☀️ Solar Comunitario La Cañada</h3>
+    <div class="meta" data-i18n="marcha.p2.meta">Sevilla · 48 paneles · 24 kW · En el común desde 2024</div>
+    <div class="desc" data-i18n="marcha.p2.desc">Energía solar comunitaria. Los bonos están denominados en kW de capacidad instalada y dan derecho a la energía generada (~1 200 kWh/año por kW ≈ 240 €/año a 0,2 €/kWh). La infraestructura es propiedad de la comunidad.</div>
     <div class="acciones">
-      <a href="#" class="btn btn-outline btn-sm">Saber más</a>
-      <a href="#" class="btn btn-outline btn-sm">Contacto</a>
+      <a href="#" class="btn btn-outline btn-sm" data-i18n="marcha.more">Saber más</a>
+      <a href="#" class="btn btn-outline btn-sm" data-i18n="marcha.contact">Contacto</a>
     </div>
-    <div class="bonos-header">Bonos disponibles</div>
+    <div class="bonos-header" data-i18n="marcha.bonds">Bonos disponibles</div>
     <table class="bono-table">
       <thead>
-        <tr><th>Bono</th><th>Unidad de uso</th><th>Inversor</th><th>Precio</th><th>Descuento</th><th></th></tr>
+        <tr><th data-i18n="tbl.bond">Bono</th><th data-i18n="tbl.unit">Unidad de uso</th><th data-i18n="tbl.investor">Inversor</th><th data-i18n="tbl.price">Precio</th><th data-i18n="tbl.disc">Descuento</th><th></th></tr>
       </thead>
       <tbody>
         <tr>
-          <td>1 bono</td>
-          <td>1 kW (~1 200 kWh/año)</td>
+          <td data-i18n="tbl.1bond">1 bono</td>
+          <td data-i18n="marcha.p2.u">1 kW (~1 200 kWh/año)</td>
           <td>María S.</td>
           <td class="precio">675 €</td>
           <td class="descuento">−10%</td>
-          <td><button class="btn btn-primary">Comprar</button></td>
+          <td><button class="btn btn-primary" data-i18n="tbl.buy">Comprar</button></td>
         </tr>
         <tr>
-          <td>1 bono</td>
-          <td>1 kW (~1 200 kWh/año)</td>
+          <td data-i18n="tbl.1bond">1 bono</td>
+          <td data-i18n="marcha.p2.u">1 kW (~1 200 kWh/año)</td>
           <td>Javier R.</td>
           <td class="precio">715 €</td>
           <td class="descuento">−5%</td>
-          <td><button class="btn btn-primary">Comprar</button></td>
+          <td><button class="btn btn-primary" data-i18n="tbl.buy">Comprar</button></td>
         </tr>
         <tr>
-          <td>1 bono</td>
-          <td>1 kW (~1 200 kWh/año)</td>
+          <td data-i18n="tbl.1bond">1 bono</td>
+          <td data-i18n="marcha.p2.u">1 kW (~1 200 kWh/año)</td>
           <td>Lucía F.</td>
           <td class="precio">750 €</td>
           <td class="descuento">0%</td>
-          <td><button class="btn btn-primary">Comprar</button></td>
+          <td><button class="btn btn-primary" data-i18n="tbl.buy">Comprar</button></td>
         </tr>
       </tbody>
     </table>
@@ -392,44 +393,42 @@
 
   <!-- PROYECTO 3: COWORKING -->
   <div class="proyecto-bloque">
-    <h3>🏢 Coworking Barrio Sur</h3>
-    <div class="meta">Valencia · 80 m² · 20 puestos · En el común desde 2026</div>
-    <div class="desc">
-      Espacio de trabajo comunitario. Bonos denominados en horas de uso por semana. El espacio no se vende fuera del común.
-    </div>
+    <h3 data-i18n="marcha.p3.title">🏢 Coworking Barrio Sur</h3>
+    <div class="meta" data-i18n="marcha.p3.meta">Valencia · 80 m² · 20 puestos · En el común desde 2026</div>
+    <div class="desc" data-i18n="marcha.p3.desc">Espacio de trabajo comunitario. Bonos denominados en horas de uso por semana. El espacio no se vende fuera del común.</div>
     <div class="acciones">
-      <a href="#" class="btn btn-outline btn-sm">Saber más</a>
-      <a href="#" class="btn btn-outline btn-sm">Contacto</a>
+      <a href="#" class="btn btn-outline btn-sm" data-i18n="marcha.more">Saber más</a>
+      <a href="#" class="btn btn-outline btn-sm" data-i18n="marcha.contact">Contacto</a>
     </div>
-    <div class="bonos-header">Bonos disponibles</div>
+    <div class="bonos-header" data-i18n="marcha.bonds">Bonos disponibles</div>
     <table class="bono-table">
       <thead>
-        <tr><th>Bono</th><th>Unidad de uso</th><th>Inversor</th><th>Precio</th><th>Descuento</th><th></th></tr>
+        <tr><th data-i18n="tbl.bond">Bono</th><th data-i18n="tbl.unit">Unidad de uso</th><th data-i18n="tbl.investor">Inversor</th><th data-i18n="tbl.price">Precio</th><th data-i18n="tbl.disc">Descuento</th><th></th></tr>
       </thead>
       <tbody>
         <tr>
-          <td>1 bono</td>
-          <td>4 h/semana</td>
+          <td data-i18n="tbl.1bond">1 bono</td>
+          <td data-i18n="marcha.p3.u">4 h/semana</td>
           <td>Elena V.</td>
           <td class="precio">250 €</td>
           <td class="descuento">−10%</td>
-          <td><button class="btn btn-primary">Comprar</button></td>
+          <td><button class="btn btn-primary" data-i18n="tbl.buy">Comprar</button></td>
         </tr>
         <tr>
-          <td>1 bono</td>
-          <td>4 h/semana</td>
+          <td data-i18n="tbl.1bond">1 bono</td>
+          <td data-i18n="marcha.p3.u">4 h/semana</td>
           <td>Tomás H.</td>
           <td class="precio">270 €</td>
           <td class="descuento">−5%</td>
-          <td><button class="btn btn-primary">Comprar</button></td>
+          <td><button class="btn btn-primary" data-i18n="tbl.buy">Comprar</button></td>
         </tr>
         <tr>
-          <td>2 bonos</td>
-          <td>8 h/semana</td>
+          <td data-i18n="tbl.2bonds">2 bonos</td>
+          <td data-i18n="marcha.p3.u2">8 h/semana</td>
           <td>Sofía D.</td>
           <td class="precio">520 €</td>
           <td class="descuento">−5%</td>
-          <td><button class="btn btn-primary">Comprar</button></td>
+          <td><button class="btn btn-primary" data-i18n="tbl.buy">Comprar</button></td>
         </tr>
       </tbody>
     </table>
@@ -437,36 +436,34 @@
 
   <!-- PROYECTO 4: TALLER -->
   <div class="proyecto-bloque">
-    <h3>🚲 Taller Común de Bicis</h3>
-    <div class="meta">Bilbao · 60 m² · Herramientas completas · En el común desde 2025</div>
-    <div class="desc">
-      Taller de reparaciones comunitario. Bonos por horas de uso del espacio y herramientas.
-    </div>
+    <h3 data-i18n="marcha.p4.title">🚲 Taller Común de Bicis</h3>
+    <div class="meta" data-i18n="marcha.p4.meta">Bilbao · 60 m² · Herramientas completas · En el común desde 2025</div>
+    <div class="desc" data-i18n="marcha.p4.desc">Taller de reparaciones comunitario. Bonos por horas de uso del espacio y herramientas.</div>
     <div class="acciones">
-      <a href="#" class="btn btn-outline btn-sm">Saber más</a>
-      <a href="#" class="btn btn-outline btn-sm">Contacto</a>
+      <a href="#" class="btn btn-outline btn-sm" data-i18n="marcha.more">Saber más</a>
+      <a href="#" class="btn btn-outline btn-sm" data-i18n="marcha.contact">Contacto</a>
     </div>
-    <div class="bonos-header">Bonos disponibles</div>
+    <div class="bonos-header" data-i18n="marcha.bonds">Bonos disponibles</div>
     <table class="bono-table">
       <thead>
-        <tr><th>Bono</th><th>Unidad de uso</th><th>Inversor</th><th>Precio</th><th>Descuento</th><th></th></tr>
+        <tr><th data-i18n="tbl.bond">Bono</th><th data-i18n="tbl.unit">Unidad de uso</th><th data-i18n="tbl.investor">Inversor</th><th data-i18n="tbl.price">Precio</th><th data-i18n="tbl.disc">Descuento</th><th></th></tr>
       </thead>
       <tbody>
         <tr>
-          <td>1 bono</td>
-          <td>6 h/mes</td>
+          <td data-i18n="tbl.1bond">1 bono</td>
+          <td data-i18n="marcha.p4.u">6 h/mes</td>
           <td>Andrés K.</td>
           <td class="precio">810 €</td>
           <td class="descuento">−10%</td>
-          <td><button class="btn btn-primary">Comprar</button></td>
+          <td><button class="btn btn-primary" data-i18n="tbl.buy">Comprar</button></td>
         </tr>
         <tr>
-          <td>1 bono</td>
-          <td>6 h/mes</td>
+          <td data-i18n="tbl.1bond">1 bono</td>
+          <td data-i18n="marcha.p4.u">6 h/mes</td>
           <td>Paula N.</td>
           <td class="precio">860 €</td>
           <td class="descuento">−5%</td>
-          <td><button class="btn btn-primary">Comprar</button></td>
+          <td><button class="btn btn-primary" data-i18n="tbl.buy">Comprar</button></td>
         </tr>
       </tbody>
     </table>
@@ -475,56 +472,56 @@
 
 <!-- VACANTES PARA ADMINISTRADORAS -->
 <section id="vacantes">
-  <h2>Vacantes para administradoras</h2>
-  <p class="subtitle">Proyectos en marcha que buscan personas para gestionar su día a día. Trabaja para el común y disfruta la vida comunal.</p>
+  <h2 data-i18n="vac.title">Vacantes para administradoras</h2>
+  <p class="subtitle" data-i18n="vac.sub">Proyectos en marcha que buscan personas para gestionar su día a día. Trabaja para el común y disfruta la vida comunal.</p>
 
   <div class="vacante-card">
     <div class="info">
-      <h4>🏠 Vivienda Común del Norte</h4>
-      <div class="meta">Madrid · 85 m² · 3 habitaciones</div>
-      <div class="rol">Rol: Coordinadora de mantenimiento y comunidad (4 h/sem)</div>
+      <h4 data-i18n="vac.c1.title">🏠 Vivienda Común del Norte</h4>
+      <div class="meta" data-i18n="vac.c1.meta">Madrid · 85 m² · 3 habitaciones</div>
+      <div class="rol" data-i18n="vac.c1.role">Rol: Coordinadora de mantenimiento y comunidad (4 h/sem)</div>
     </div>
-    <a href="#" class="btn btn-primary">Postular</a>
+    <a href="#" class="btn btn-primary" data-i18n="vac.apply">Postular</a>
   </div>
 
   <div class="vacante-card">
     <div class="info">
-      <h4>☀️ Solar Comunitario La Cañada</h4>
-      <div class="meta">Sevilla · 48 paneles · 24 kW</div>
-      <div class="rol">Rol: Técnica de monitorización y facturación (6 h/sem)</div>
+      <h4 data-i18n="vac.c2.title">☀️ Solar Comunitario La Cañada</h4>
+      <div class="meta" data-i18n="vac.c2.meta">Sevilla · 48 paneles · 24 kW</div>
+      <div class="rol" data-i18n="vac.c2.role">Rol: Técnica de monitorización y facturación (6 h/sem)</div>
     </div>
-    <a href="#" class="btn btn-primary">Postular</a>
+    <a href="#" class="btn btn-primary" data-i18n="vac.apply">Postular</a>
   </div>
 
   <div class="vacante-card">
     <div class="info">
-      <h4>🏢 Coworking Barrio Sur</h4>
-      <div class="meta">Valencia · 80 m² · 20 puestos</div>
-      <div class="rol">Rol: Gestora de espacio y comunidad (10 h/sem)</div>
+      <h4 data-i18n="vac.c3.title">🏢 Coworking Barrio Sur</h4>
+      <div class="meta" data-i18n="vac.c3.meta">Valencia · 80 m² · 20 puestos</div>
+      <div class="rol" data-i18n="vac.c3.role">Rol: Gestora de espacio y comunidad (10 h/sem)</div>
     </div>
-    <a href="#" class="btn btn-primary">Postular</a>
+    <a href="#" class="btn btn-primary" data-i18n="vac.apply">Postular</a>
   </div>
 
   <div class="vacante-card">
     <div class="info">
-      <h4>🚲 Taller Común de Bicis</h4>
-      <div class="meta">Bilbao · 60 m² · Herramientas completas</div>
-      <div class="rol">Rol: Coordinadora de reservas y mantenimiento (5 h/sem)</div>
+      <h4 data-i18n="vac.c4.title">🚲 Taller Común de Bicis</h4>
+      <div class="meta" data-i18n="vac.c4.meta">Bilbao · 60 m² · Herramientas completas</div>
+      <div class="rol" data-i18n="vac.c4.role">Rol: Coordinadora de reservas y mantenimiento (5 h/sem)</div>
     </div>
-    <a href="#" class="btn btn-primary">Postular</a>
+    <a href="#" class="btn btn-primary" data-i18n="vac.apply">Postular</a>
   </div>
 </section>
 
 <!-- CÓMO FUNCIONA -->
 <section id="como">
-  <h2>Cómo funciona</h2>
-  <p class="subtitle">No es deuda. No es equity. Es un derecho de uso permanente, transferible, sin vencimiento.</p>
+  <h2 data-i18n="how.title">Cómo funciona</h2>
+  <p class="subtitle" data-i18n="how.sub">No es deuda. No es equity. Es un derecho de uso permanente, transferible, sin vencimiento.</p>
 
   <!-- TABS -->
   <div class="tabs">
-    <button class="tab-btn active" onclick="switchTab('inversores', this)">💰 Inversores</button>
-    <button class="tab-btn" onclick="switchTab('usuarias', this)">🔑 Usuarias</button>
-    <button class="tab-btn" onclick="switchTab('admins', this)">⚙️ Admins</button>
+    <button class="tab-btn active" onclick="switchTab('inversores', this)" data-i18n="how.tab1">💰 Inversores</button>
+    <button class="tab-btn" onclick="switchTab('usuarias', this)" data-i18n="how.tab2">🔑 Usuarias</button>
+    <button class="tab-btn" onclick="switchTab('admins', this)" data-i18n="how.tab3">⚙️ Admins</button>
   </div>
 
   <!-- TAB: INVERSORES -->
@@ -532,23 +529,23 @@
     <div class="steps">
       <div class="step">
         <div class="num">1</div>
-        <h4>Elige un proyecto</h4>
-        <p>Viviendas, energía, espacios de trabajo, talleres, trasteros — bienes en propiedad comunitaria permanente.</p>
+        <h4 data-i18n="how.i1.t">Elige un proyecto</h4>
+        <p data-i18n="how.i1.d">Viviendas, energía, espacios de trabajo, talleres, trasteros — bienes en propiedad comunitaria permanente.</p>
       </div>
       <div class="step">
         <div class="num">2</div>
-        <h4>Compra bonos con descuento</h4>
-        <p>Cada bono da una cuota de uso del bien. Se emiten con descuento (máx. 10%) según el riesgo y el momento.</p>
+        <h4 data-i18n="how.i2.t">Compra bonos con descuento</h4>
+        <p data-i18n="how.i2.d">Cada bono da una cuota de uso del bien. Se emiten con descuento (máx. 10%) según el riesgo y el momento.</p>
       </div>
       <div class="step">
         <div class="num">3</div>
-        <h4>Usa y participa</h4>
-        <p>Accede al bien según tu cuota. Participas en la gobernanza por consentimiento: usuarias, inversoras y administradoras.</p>
+        <h4 data-i18n="how.i3.t">Usa y participa</h4>
+        <p data-i18n="how.i3.d">Accede al bien según tu cuota. Participas en la gobernanza por consentimiento: usuarias, inversoras y administradoras.</p>
       </div>
       <div class="step">
         <div class="num">4</div>
-        <h4>Transfiere o conserva</h4>
-        <p>Los bonos no vencen. Puedes transferirlos a otro miembro o conservarlos como almacén de valor. El bien nunca sale del común.</p>
+        <h4 data-i18n="how.i4.t">Transfiere o conserva</h4>
+        <p data-i18n="how.i4.d">Los bonos no vencen. Puedes transferirlos a otro miembro o conservarlos como almacén de valor. El bien nunca sale del común.</p>
       </div>
     </div>
   </div>
@@ -558,23 +555,23 @@
     <div class="steps">
       <div class="step">
         <div class="num">1</div>
-        <h4>Elige el proyecto (o créalo)</h4>
-        <p>Explora los bienes comunales en marcha o en financiación, o propón uno nuevo desde "En ideación".</p>
+        <h4 data-i18n="how.u1.t">Elige el proyecto (o créalo)</h4>
+        <p data-i18n="how.u1.d">Explora los bienes comunales en marcha o en financiación, o propón uno nuevo desde "En ideación".</p>
       </div>
       <div class="step">
         <div class="num">2</div>
-        <h4>Conecta con el grupo y conócelo</h4>
-        <p>Conoce a las personas que ya forman parte: usuarias, inversoras y administradoras. La gobernanza es por consentimiento.</p>
+        <h4 data-i18n="how.u2.t">Conecta con el grupo y conócelo</h4>
+        <p data-i18n="how.u2.d">Conoce a las personas que ya forman parte: usuarias, inversoras y administradoras. La gobernanza es por consentimiento.</p>
       </div>
       <div class="step">
         <div class="num">3</div>
-        <h4>Compra bonos en el mercado o paga con €</h4>
-        <p>Adquiere bonos de uso en el mercado secundario o paga directamente en euros. Tu cuota de uso queda garantizada.</p>
+        <h4 data-i18n="how.u3.t">Compra bonos en el mercado o paga con €</h4>
+        <p data-i18n="how.u3.d">Adquiere bonos de uso en el mercado secundario o paga directamente en euros. Tu cuota de uso queda garantizada.</p>
       </div>
       <div class="step">
         <div class="num">4</div>
-        <h4>Disfruta de la vida comunal</h4>
-        <p>Accede al bien, participa en las decisiones colectivas y vive en comunidad. Sin vencimiento, para siempre.</p>
+        <h4 data-i18n="how.u4.t">Disfruta de la vida comunal</h4>
+        <p data-i18n="how.u4.d">Accede al bien, participa en las decisiones colectivas y vive en comunidad. Sin vencimiento, para siempre.</p>
       </div>
     </div>
   </div>
@@ -584,13 +581,13 @@
     <div class="steps">
       <div class="step">
         <div class="num">1</div>
-        <h4>Explora vacantes</h4>
-        <p>Mira qué proyectos en marcha buscan administradoras: coordinación, mantenimiento, gestión de reservas, facturación…</p>
+        <h4 data-i18n="how.a1.t">Explora vacantes</h4>
+        <p data-i18n="how.a1.d">Mira qué proyectos en marcha buscan administradoras: coordinación, mantenimiento, gestión de reservas, facturación…</p>
       </div>
       <div class="step">
         <div class="num">2</div>
-        <h4>Trabaja para el común y disfruta la vida comunal</h4>
-        <p>Trabaja para un bien comunal manteniéndolo y gestionando su día a día. A cambio, acceso al bien y vida en comunidad.</p>
+        <h4 data-i18n="how.a2.t">Trabaja para el común y disfruta la vida comunal</h4>
+        <p data-i18n="how.a2.d">Trabaja para un bien comunal manteniéndolo y gestionando su día a día. A cambio, acceso al bien y vida en comunidad.</p>
       </div>
     </div>
   </div>
@@ -598,109 +595,486 @@
 
 <!-- EN IDEACIÓN -->
 <section id="ideacion">
-  <h2>En ideación</h2>
-  <p class="subtitle">Bienes comunales propuestos por la comunidad. Indica tu interés o contacta con quien lo propuso.</p>
+  <h2 data-i18n="idea.title">En ideación</h2>
+  <p class="subtitle" data-i18n="idea.sub">Bienes comunales propuestos por la comunidad. Indica tu interés o contacta con quien lo propuso.</p>
 
   <!-- LISTA DE PROYECTOS IDEADOS -->
   <div class="ideados-list">
     <div class="ideado-card">
-      <h4>🌱 Huerta Comunitaria Las Rosas</h4>
-      <div class="meta">Getafe · 500 m² · 20 parcelas individuales + huerto común</div>
-      <div class="desc">Parcelas de cultivo individuales y un huerto compartido. Acceso a herramientas, compostaje y sistema de riego por goteo.</div>
-      <div class="proposer">Propuesto por: Lucía M. · hace 2 semanas</div>
+      <h4 data-i18n="idea.c1.title">🌱 Huerta Comunitaria Las Rosas</h4>
+      <div class="meta" data-i18n="idea.c1.meta">Getafe · 500 m² · 20 parcelas individuales + huerto común</div>
+      <div class="desc" data-i18n="idea.c1.desc">Parcelas de cultivo individuales y un huerto compartido. Acceso a herramientas, compostaje y sistema de riego por goteo.</div>
+      <div class="proposer" data-i18n="idea.c1.by">Propuesto por: Lucía M. · hace 2 semanas</div>
       <div class="acciones">
-        <a href="#" class="btn btn-primary btn-sm">Me interesa</a>
-        <a href="#" class="btn btn-outline btn-sm">Contactar a Lucía</a>
+        <a href="#" class="btn btn-primary btn-sm" data-i18n="idea.interested">Me interesa</a>
+        <a href="#" class="btn btn-outline btn-sm" data-i18n="idea.c1.contact">Contactar a Lucía</a>
       </div>
     </div>
 
     <div class="ideado-card">
-      <h4>🏊 Piscina Comunitaria El Sol</h4>
-      <div class="meta">Cádiz · 25 m × 12 m · Solar municipal en desuso</div>
-      <div class="desc">Piscina de baño libre gestionada por la comunidad. Sin horarios restrictivos, con zona de sombra y vestuarios.</div>
-      <div class="proposer">Propuesto por: Andrés T. · hace 1 mes</div>
+      <h4 data-i18n="idea.c2.title">🏊 Piscina Comunitaria El Sol</h4>
+      <div class="meta" data-i18n="idea.c2.meta">Cádiz · 25 m × 12 m · Solar municipal en desuso</div>
+      <div class="desc" data-i18n="idea.c2.desc">Piscina de baño libre gestionada por la comunidad. Sin horarios restrictivos, con zona de sombra y vestuarios.</div>
+      <div class="proposer" data-i18n="idea.c2.by">Propuesto por: Andrés T. · hace 1 mes</div>
       <div class="acciones">
-        <a href="#" class="btn btn-primary btn-sm">Me interesa</a>
-        <a href="#" class="btn btn-outline btn-sm">Contactar a Andrés</a>
+        <a href="#" class="btn btn-primary btn-sm" data-i18n="idea.interested">Me interesa</a>
+        <a href="#" class="btn btn-outline btn-sm" data-i18n="idea.c2.contact">Contactar a Andrés</a>
       </div>
     </div>
 
     <div class="ideado-card">
-      <h4>🧵 Taller de Telar y Costura</h4>
-      <div class="meta">Ourense · 40 m² · 4 telares, 6 máquinas de coser industrial</div>
-      <div class="desc">Espacio para costura, sastrería y tejido. Materiales base incluidos (hilos, botones, telas de descarte). Ideal para quien quiere aprender o producir.</div>
-      <div class="proposer">Propuesto por: Marta R. · hace 3 semanas</div>
+      <h4 data-i18n="idea.c3.title">🧵 Taller de Telar y Costura</h4>
+      <div class="meta" data-i18n="idea.c3.meta">Ourense · 40 m² · 4 telares, 6 máquinas de coser industrial</div>
+      <div class="desc" data-i18n="idea.c3.desc">Espacio para costura, sastrería y tejido. Materiales base incluidos (hilos, botones, telas de descarte). Ideal para quien quiere aprender o producir.</div>
+      <div class="proposer" data-i18n="idea.c3.by">Propuesto por: Marta R. · hace 3 semanas</div>
       <div class="acciones">
-        <a href="#" class="btn btn-primary btn-sm">Me interesa</a>
-        <a href="#" class="btn btn-outline btn-sm">Contactar a Marta</a>
+        <a href="#" class="btn btn-primary btn-sm" data-i18n="idea.interested">Me interesa</a>
+        <a href="#" class="btn btn-outline btn-sm" data-i18n="idea.c3.contact">Contactar a Marta</a>
       </div>
     </div>
 
     <div class="ideado-card">
-      <h4>📚 Librería y Sala de Lectura Común</h4>
-      <div class="meta">A Coruña · 60 m² · ~800 libros + sala de lectura con 12 plazas</div>
-      <div class="desc">Biblioteca comunitaria de préstamo + sala de lectura silenciosa. Los libros son de la comunidad: aportas y te llevas.</div>
-      <div class="proposer">Propuesto por: Jorge P. · hace 5 días</div>
+      <h4 data-i18n="idea.c4.title">📚 Librería y Sala de Lectura Común</h4>
+      <div class="meta" data-i18n="idea.c4.meta">A Coruña · 60 m² · ~800 libros + sala de lectura con 12 plazas</div>
+      <div class="desc" data-i18n="idea.c4.desc">Biblioteca comunitaria de préstamo + sala de lectura silenciosa. Los libros son de la comunidad: aportas y te llevas.</div>
+      <div class="proposer" data-i18n="idea.c4.by">Propuesto por: Jorge P. · hace 5 días</div>
       <div class="acciones">
-        <a href="#" class="btn btn-primary btn-sm">Me interesa</a>
-        <a href="#" class="btn btn-outline btn-sm">Contactar a Jorge</a>
+        <a href="#" class="btn btn-primary btn-sm" data-i18n="idea.interested">Me interesa</a>
+        <a href="#" class="btn btn-outline btn-sm" data-i18n="idea.c4.contact">Contactar a Jorge</a>
       </div>
     </div>
   </div>
 
   <!-- FORMULARIO PARA PROPONER -->
   <div class="ideacion-form">
-    <h3>Propón un bien comunal</h3>
-    <p>Cuéntanos qué tipo de bien comunal necesitas en tu vida y dónde. Se publica de forma abierta para que otras personas se sumen.</p>
+    <h3 data-i18n="form.title">Propón un bien comunal</h3>
+    <p data-i18n="form.desc">Cuéntanos qué tipo de bien comunal necesitas en tu vida y dónde. Se publica de forma abierta para que otras personas se sumen.</p>
 
     <div class="form-group">
-      <label>Tipo de bien</label>
+      <label data-i18n="form.type">Tipo de bien</label>
       <select>
-        <option value="">Selecciona…</option>
-        <option>Vivienda</option>
-        <option>Energía (solar, eólica…)</option>
-        <option>Coworking / espacio de trabajo</option>
-        <option>Trastero / almacenaje</option>
-        <option>Taller / herramientas</option>
-        <option>Cocina comunitaria</option>
-        <option>Huerta / espacio verde</option>
-        <option>Material compartido (montaña, bici…)</option>
-        <option>Piscina / espacio deportivo</option>
-        <option>Biblioteca / sala de lectura</option>
-        <option>Otro</option>
+        <option value="" data-i18n="form.select">Selecciona…</option>
+        <option data-i18n="form.opt1">Vivienda</option>
+        <option data-i18n="form.opt2">Energía (solar, eólica…)</option>
+        <option data-i18n="form.opt3">Coworking / espacio de trabajo</option>
+        <option data-i18n="form.opt4">Trastero / almacenaje</option>
+        <option data-i18n="form.opt5">Taller / herramientas</option>
+        <option data-i18n="form.opt6">Cocina comunitaria</option>
+        <option data-i18n="form.opt7">Huerta / espacio verde</option>
+        <option data-i18n="form.opt8">Material compartido (montaña, bici…)</option>
+        <option data-i18n="form.opt9">Piscina / espacio deportivo</option>
+        <option data-i18n="form.opt10">Biblioteca / sala de lectura</option>
+        <option data-i18n="form.opt11">Otro</option>
       </select>
     </div>
     <div class="form-group">
-      <label>¿Dónde? (ciudad / barrio)</label>
+      <label data-i18n="form.where">¿Dónde? (ciudad / barrio)</label>
       <input type="text" placeholder="Ej: Madrid, Lavapiés">
     </div>
     <div class="form-group">
-      <label>¿Qué necesitas? (opcional)</label>
+      <label data-i18n="form.need">¿Qué necesitas? (opcional)</label>
       <textarea placeholder="Describe brevemente el bien que necesitas, el tamaño, la frecuencia de uso…"></textarea>
     </div>
     <div class="form-group">
-      <label>Tu nombre (público)</label>
+      <label data-i18n="form.name">Tu nombre (público)</label>
       <input type="text" placeholder="Tu nombre o alias">
     </div>
     <div class="form-group">
-      <label>Contacto (email o Telegram, opcional)</label>
+      <label data-i18n="form.contact">Contacto (email o Telegram, opcional)</label>
       <input type="text" placeholder="Para que el grupo pueda contactarte">
     </div>
-    <button class="btn btn-primary" style="width:100%">Publicar mi propuesta</button>
+    <button class="btn btn-primary" style="width:100%" data-i18n="form.submit">Publicar mi propuesta</button>
   </div>
 </section>
 
 <footer>
-  <p>Común · Mockup conceptual · No es un producto financiero real</p>
-  <p>Inspirado en Stroud Housing Commons, Use-Credit Obligations (Chris Cook / Island Power) y Mutual Credit Services.</p>
+  <p data-i18n="footer.p1">Común · Mockup conceptual · No es un producto financiero real</p>
+  <p data-i18n="footer.p2">Inspirado en Stroud Housing Commons, Use-Credit Obligations (Chris Cook / Island Power) y Mutual Credit Services.</p>
 </footer>
 
 <script>
+// ─── TABS ───
 function switchTab(name, btn) {
   document.querySelectorAll('.tab-content').forEach(el => el.classList.remove('active'));
   document.querySelectorAll('.tab-btn').forEach(el => el.classList.remove('active'));
   document.getElementById('tab-' + name).classList.add('active');
   btn.classList.add('active');
+}
+
+// ─── LANGUAGE TOGGLE ───
+let currentLang = 'es';
+
+const T = {
+  es: {
+    "nav.fund": "En financiación",
+    "nav.progress": "En marcha",
+    "nav.how": "Cómo funciona",
+    "nav.ideation": "En ideación",
+    "hero.title": "Ni público, ni privado, sin bienes comunales",
+    "hero.sub": "acceso/use asequible (precio de coste) &nbsp;|&nbsp; retorno a la inversión (sin deuda ni equity) &nbsp;|&nbsp; gobernanza colectiva",
+    "model.title": "¿Qué es Común?",
+    "model.p1a": "Común",
+    "model.p1b": "es la plataforma para poner bienes comunes —viviendas, huertas, talleres, energía— en propiedad comunitaria permanente, financiados de forma no extractiva.",
+    "model.p2a": "Gobernanza por consentimiento",
+    "model.p2b": "de todas las personas participantes: usuarias, inversoras y administradoras.",
+    "role.invest.title": "Invierte",
+    "role.invest.desc": "Financia bienes comunales con gran demanda. Compra bonos de uso con descuento y véndelos al precio que elijas y cuando quieras en el <a href=\"#marcha\" data-i18n=\"role.invest.market\">mercado</a>.",
+    "role.invest.market": "mercado",
+    "role.invest.btn": "Ver proyectos",
+    "role.user.title": "Usuarias",
+    "role.user.desc": "Acceso ilimitado a bienes comunales (vivienda, energía, coworking, trastero) de calidad y asequibles.",
+    "role.user.btn": "Ver proyectos en marcha",
+    "role.admin.title": "Administra",
+    "role.admin.desc": "Trabaja para el común manteniéndolo y gestionando su día a día.",
+    "role.admin.btn": "Explora vacantes",
+    "groups.title": "¿Quieres poner en marcha tu común?",
+    "groups.desc": "Si ya tienes un grupo, una asociación o una comunidad con un bien en mente —una vivienda, una parcela, un local, un solar—, podemos ayudarte a estructurarlo como proyecto de bonos de uso y financiarlo con la comunidad.",
+    "groups.btn": "Crear mi común",
+    "fund.title": "Proyectos en financiación",
+    "fund.sub": "Bonos disponibles antes de que el bien entre en uso. El descuento depende del momento y del riesgo.",
+    "fund.c1.title": "Trasteros Comunitarios El Rastro",
+    "fund.c1.meta": "Madrid · 200 m² · 60 trasteros (1–6 m²)",
+    "fund.c1.progress": "35% financiado · 85 bonos emitidos",
+    "fund.c1.price": "400 € / bono (1 m² trastero)",
+    "fund.c1.disc": "Descuento: −10%",
+    "fund.c1.use": "Uso: 1 m² de almacenaje",
+    "fund.c2.title": "Biblioteca de Material de Montaña",
+    "fund.c2.meta": "Granada · 50 m² · ~200 artículos (tendas, crampones, arneses…)",
+    "fund.c2.progress": "52% financiado · 40 bonos emitidos",
+    "fund.c2.price": "600 € / bono (acceso ilimitado)",
+    "fund.c2.disc": "Descuento: −10%",
+    "fund.c2.use": "Uso: préstamo ilimitado de material",
+    "fund.c3.title": "Rocódromo Común",
+    "fund.c3.meta": "Zaragoza · 120 m² · Pared 15 m · 80 vías",
+    "fund.c3.progress": "22% financiado · 150 bonos emitidos",
+    "fund.c3.price": "1 000 € / bono (8 h/mes de escalada)",
+    "fund.c3.disc": "Descuento: −10%",
+    "fund.c3.use": "Uso: 8 h/mes",
+    "fund.c4.title": "Cocina Comunitaria La Huerta",
+    "fund.c4.meta": "Málaga · 40 m² · Equipamiento completo · 6 fogones",
+    "fund.c4.progress": "68% financiado · 90 bonos emitidos",
+    "fund.c4.price": "500 € / bono (2 h/sem de cocina)",
+    "fund.c4.disc": "Descuento: −10%",
+    "fund.c4.use": "Uso: 2 h/semana",
+    "fund.btn": "Financiar",
+    "marcha.title": "Proyectos en marcha",
+    "marcha.sub": "Bienes ya en uso comunitario. El mercado de bonos permite transferir derechos de uso.",
+    "marcha.p1.title": "🏠 Vivienda Común del Norte",
+    "marcha.p1.meta": "Madrid · 85 m² · 3 habitaciones · En el común desde 2025",
+    "marcha.p1.desc": "Vivienda en propiedad comunitaria permanente. La cuota de uso se reduce progresivamente a medida que los bonos se repagan, hasta un nivel mínimo de mantenimiento.",
+    "marcha.p1.u1": "1 m²/mes de uso",
+    "marcha.p1.u2": "2 m²/mes de uso",
+    "marcha.p2.title": "☀️ Solar Comunitario La Cañada",
+    "marcha.p2.meta": "Sevilla · 48 paneles · 24 kW · En el común desde 2024",
+    "marcha.p2.desc": "Energía solar comunitaria. Los bonos están denominados en kW de capacidad instalada y dan derecho a la energía generada (~1 200 kWh/año por kW ≈ 240 €/año a 0,2 €/kWh). La infraestructura es propiedad de la comunidad.",
+    "marcha.p2.u": "1 kW (~1 200 kWh/año)",
+    "marcha.p3.title": "🏢 Coworking Barrio Sur",
+    "marcha.p3.meta": "Valencia · 80 m² · 20 puestos · En el común desde 2026",
+    "marcha.p3.desc": "Espacio de trabajo comunitario. Bonos denominados en horas de uso por semana. El espacio no se vende fuera del común.",
+    "marcha.p3.u": "4 h/semana",
+    "marcha.p3.u2": "8 h/semana",
+    "marcha.p4.title": "🚲 Taller Común de Bicis",
+    "marcha.p4.meta": "Bilbao · 60 m² · Herramientas completas · En el común desde 2025",
+    "marcha.p4.desc": "Taller de reparaciones comunitario. Bonos por horas de uso del espacio y herramientas.",
+    "marcha.p4.u": "6 h/mes",
+    "marcha.more": "Saber más",
+    "marcha.contact": "Contacto",
+    "marcha.bonds": "Bonos disponibles",
+    "tbl.bond": "Bono",
+    "tbl.unit": "Unidad de uso",
+    "tbl.investor": "Inversor",
+    "tbl.price": "Precio",
+    "tbl.disc": "Descuento",
+    "tbl.buy": "Comprar",
+    "tbl.1bond": "1 bono",
+    "tbl.2bonds": "2 bonos",
+    "vac.title": "Vacantes para administradoras",
+    "vac.sub": "Proyectos en marcha que buscan personas para gestionar su día a día. Trabaja para el común y disfruta la vida comunal.",
+    "vac.c1.title": "🏠 Vivienda Común del Norte",
+    "vac.c1.meta": "Madrid · 85 m² · 3 habitaciones",
+    "vac.c1.role": "Rol: Coordinadora de mantenimiento y comunidad (4 h/sem)",
+    "vac.c2.title": "☀️ Solar Comunitario La Cañada",
+    "vac.c2.meta": "Sevilla · 48 paneles · 24 kW",
+    "vac.c2.role": "Rol: Técnica de monitorización y facturación (6 h/sem)",
+    "vac.c3.title": "🏢 Coworking Barrio Sur",
+    "vac.c3.meta": "Valencia · 80 m² · 20 puestos",
+    "vac.c3.role": "Rol: Gestora de espacio y comunidad (10 h/sem)",
+    "vac.c4.title": "🚲 Taller Común de Bicis",
+    "vac.c4.meta": "Bilbao · 60 m² · Herramientas completas",
+    "vac.c4.role": "Rol: Coordinadora de reservas y mantenimiento (5 h/sem)",
+    "vac.apply": "Postular",
+    "how.title": "Cómo funciona",
+    "how.sub": "No es deuda. No es equity. Es un derecho de uso permanente, transferible, sin vencimiento.",
+    "how.tab1": "💰 Inversores",
+    "how.tab2": "🔑 Usuarias",
+    "how.tab3": "⚙️ Admins",
+    "how.i1.t": "Elige un proyecto",
+    "how.i1.d": "Viviendas, energía, espacios de trabajo, talleres, trasteros — bienes en propiedad comunitaria permanente.",
+    "how.i2.t": "Compra bonos con descuento",
+    "how.i2.d": "Cada bono da una cuota de uso del bien. Se emiten con descuento (máx. 10%) según el riesgo y el momento.",
+    "how.i3.t": "Usa y participa",
+    "how.i3.d": "Accede al bien según tu cuota. Participas en la gobernanza por consentimiento: usuarias, inversoras y administradoras.",
+    "how.i4.t": "Transfiere o conserva",
+    "how.i4.d": "Los bonos no vencen. Puedes transferirlos a otro miembro o conservarlos como almacén de valor. El bien nunca sale del común.",
+    "how.u1.t": "Elige el proyecto (o créalo)",
+    "how.u1.d": "Explora los bienes comunales en marcha o en financiación, o propón uno nuevo desde \"En ideación\".",
+    "how.u2.t": "Conecta con el grupo y conócelo",
+    "how.u2.d": "Conoce a las personas que ya forman parte: usuarias, inversoras y administradoras. La gobernanza es por consentimiento.",
+    "how.u3.t": "Compra bonos en el mercado o paga con €",
+    "how.u3.d": "Adquiere bonos de uso en el mercado secundario o paga directamente en euros. Tu cuota de uso queda garantizada.",
+    "how.u4.t": "Disfruta de la vida comunal",
+    "how.u4.d": "Accede al bien, participa en las decisiones colectivas y vive en comunidad. Sin vencimiento, para siempre.",
+    "how.a1.t": "Explora vacantes",
+    "how.a1.d": "Mira qué proyectos en marcha buscan administradoras: coordinación, mantenimiento, gestión de reservas, facturación…",
+    "how.a2.t": "Trabaja para el común y disfruta la vida comunal",
+    "how.a2.d": "Trabaja para un bien comunal manteniéndolo y gestionando su día a día. A cambio, acceso al bien y vida en comunidad.",
+    "idea.title": "En ideación",
+    "idea.sub": "Bienes comunales propuestos por la comunidad. Indica tu interés o contacta con quien lo propuso.",
+    "idea.c1.title": "🌱 Huerta Comunitaria Las Rosas",
+    "idea.c1.meta": "Getafe · 500 m² · 20 parcelas individuales + huerto común",
+    "idea.c1.desc": "Parcelas de cultivo individuales y un huerto compartido. Acceso a herramientas, compostaje y sistema de riego por goteo.",
+    "idea.c1.by": "Propuesto por: Lucía M. · hace 2 semanas",
+    "idea.c1.contact": "Contactar a Lucía",
+    "idea.c2.title": "🏊 Piscina Comunitaria El Sol",
+    "idea.c2.meta": "Cádiz · 25 m × 12 m · Solar municipal en desuso",
+    "idea.c2.desc": "Piscina de baño libre gestionada por la comunidad. Sin horarios restrictivos, con zona de sombra y vestuarios.",
+    "idea.c2.by": "Propuesto por: Andrés T. · hace 1 mes",
+    "idea.c2.contact": "Contactar a Andrés",
+    "idea.c3.title": "🧵 Taller de Telar y Costura",
+    "idea.c3.meta": "Ourense · 40 m² · 4 telares, 6 máquinas de coser industrial",
+    "idea.c3.desc": "Espacio para costura, sastrería y tejido. Materiales base incluidos (hilos, botones, telas de descarte). Ideal para quien quiere aprender o producir.",
+    "idea.c3.by": "Propuesto por: Marta R. · hace 3 semanas",
+    "idea.c3.contact": "Contactar a Marta",
+    "idea.c4.title": "📚 Librería y Sala de Lectura Común",
+    "idea.c4.meta": "A Coruña · 60 m² · ~800 libros + sala de lectura con 12 plazas",
+    "idea.c4.desc": "Biblioteca comunitaria de préstamo + sala de lectura silenciosa. Los libros son de la comunidad: aportas y te llevas.",
+    "idea.c4.by": "Propuesto por: Jorge P. · hace 5 días",
+    "idea.c4.contact": "Contactar a Jorge",
+    "idea.interested": "Me interesa",
+    "form.title": "Propón un bien comunal",
+    "form.desc": "Cuéntanos qué tipo de bien comunal necesitas en tu vida y dónde. Se publica de forma abierta para que otras personas se sumen.",
+    "form.type": "Tipo de bien",
+    "form.select": "Selecciona…",
+    "form.opt1": "Vivienda",
+    "form.opt2": "Energía (solar, eólica…)",
+    "form.opt3": "Coworking / espacio de trabajo",
+    "form.opt4": "Trastero / almacenaje",
+    "form.opt5": "Taller / herramientas",
+    "form.opt6": "Cocina comunitaria",
+    "form.opt7": "Huerta / espacio verde",
+    "form.opt8": "Material compartido (montaña, bici…)",
+    "form.opt9": "Piscina / espacio deportivo",
+    "form.opt10": "Biblioteca / sala de lectura",
+    "form.opt11": "Otro",
+    "form.where": "¿Dónde? (ciudad / barrio)",
+    "form.need": "¿Qué necesitas? (opcional)",
+    "form.name": "Tu nombre (público)",
+    "form.contact": "Contacto (email o Telegram, opcional)",
+    "form.submit": "Publicar mi propuesta",
+    "footer.p1": "Común · Mockup conceptual · No es un producto financiero real",
+    "footer.p2": "Inspirado en Stroud Housing Commons, Use-Credit Obligations (Chris Cook / Island Power) y Mutual Credit Services."
+  },
+  en: {
+    "nav.fund": "Funding",
+    "nav.progress": "In progress",
+    "nav.how": "How it works",
+    "nav.ideation": "Ideation",
+    "hero.title": "Neither public nor private, just commons",
+    "hero.sub": "affordable access (cost price) &nbsp;|&nbsp; return on investment (no debt, no equity) &nbsp;|&nbsp; collective governance",
+    "model.title": "What is Común?",
+    "model.p1a": "Común",
+    "model.p1b": "is the platform to put commons —housing, gardens, workshops, energy— into permanent community ownership, funded in a non-extractive way.",
+    "model.p2a": "Consent-based governance",
+    "model.p2b": "of all participants: users, investors, and administrators.",
+    "role.invest.title": "Invest",
+    "role.invest.desc": "Fund high-demand commons. Buy use bonds at a discount and sell them at your chosen price whenever you want on the <a href=\"#marcha\" data-i18n=\"role.invest.market\">market</a>.",
+    "role.invest.market": "market",
+    "role.invest.btn": "View projects",
+    "role.user.title": "Users",
+    "role.user.desc": "Unlimited access to quality, affordable commons (housing, energy, coworking, storage).",
+    "role.user.btn": "View projects in progress",
+    "role.admin.title": "Manage",
+    "role.admin.desc": "Work for the commons by maintaining and managing its day-to-day.",
+    "role.admin.btn": "Browse vacancies",
+    "groups.title": "Want to launch your commons?",
+    "groups.desc": "If you already have a group, association, or community with an asset in mind —a home, a plot, a space, a lot—, we can help you structure it as a use-bond project and fund it with the community.",
+    "groups.btn": "Create my commons",
+    "fund.title": "Projects in funding",
+    "fund.sub": "Bonds available before the asset enters use. The discount depends on timing and risk.",
+    "fund.c1.title": "Community Storage El Rastro",
+    "fund.c1.meta": "Madrid · 200 m² · 60 storage units (1–6 m²)",
+    "fund.c1.progress": "35% funded · 85 bonds issued",
+    "fund.c1.price": "€400 / bond (1 m² storage)",
+    "fund.c1.disc": "Discount: −10%",
+    "fund.c1.use": "Use: 1 m² of storage",
+    "fund.c2.title": "Mountain Gear Library",
+    "fund.c2.meta": "Granada · 50 m² · ~200 items (tents, crampons, harnesses…)",
+    "fund.c2.progress": "52% funded · 40 bonds issued",
+    "fund.c2.price": "€600 / bond (unlimited access)",
+    "fund.c2.disc": "Discount: −10%",
+    "fund.c2.use": "Use: unlimited gear lending",
+    "fund.c3.title": "Common Climbing Wall",
+    "fund.c3.meta": "Zaragoza · 120 m² · 15 m wall · 80 routes",
+    "fund.c3.progress": "22% funded · 150 bonds issued",
+    "fund.c3.price": "€1,000 / bond (8 h/month climbing)",
+    "fund.c3.disc": "Discount: −10%",
+    "fund.c3.use": "Use: 8 h/month",
+    "fund.c4.title": "Community Kitchen La Huerta",
+    "fund.c4.meta": "Málaga · 40 m² · Full equipment · 6 burners",
+    "fund.c4.progress": "68% funded · 90 bonds issued",
+    "fund.c4.price": "€500 / bond (2 h/week cooking)",
+    "fund.c4.disc": "Discount: −10%",
+    "fund.c4.use": "Use: 2 h/week",
+    "fund.btn": "Fund",
+    "marcha.title": "Projects in progress",
+    "marcha.sub": "Assets already in community use. The bond market allows transferring use rights.",
+    "marcha.p1.title": "🏠 Northern Commons Housing",
+    "marcha.p1.meta": "Madrid · 85 m² · 3 bedrooms · In the commons since 2025",
+    "marcha.p1.desc": "Housing in permanent community ownership. The use fee decreases progressively as bonds are repaid, down to a minimum maintenance level.",
+    "marcha.p1.u1": "1 m²/month use",
+    "marcha.p1.u2": "2 m²/month use",
+    "marcha.p2.title": "☀️ Community Solar La Cañada",
+    "marcha.p2.meta": "Seville · 48 panels · 24 kW · In the commons since 2024",
+    "marcha.p2.desc": "Community solar energy. Bonds are denominated in kW of installed capacity and entitle the holder to the energy generated (~1,200 kWh/year per kW ≈ €240/year at €0.2/kWh). The infrastructure is community-owned.",
+    "marcha.p2.u": "1 kW (~1,200 kWh/year)",
+    "marcha.p3.title": "🏢 Coworking Barrio Sur",
+    "marcha.p3.meta": "Valencia · 80 m² · 20 desks · In the commons since 2026",
+    "marcha.p3.desc": "Community workspace. Bonds denominated in hours of use per week. The space is never sold outside the commons.",
+    "marcha.p3.u": "4 h/week",
+    "marcha.p3.u2": "8 h/week",
+    "marcha.p4.title": "🚲 Common Bike Workshop",
+    "marcha.p4.meta": "Bilbao · 60 m² · Full toolset · In the commons since 2025",
+    "marcha.p4.desc": "Community repair workshop. Bonds by hours of use of the space and tools.",
+    "marcha.p4.u": "6 h/month",
+    "marcha.more": "Learn more",
+    "marcha.contact": "Contact",
+    "marcha.bonds": "Available bonds",
+    "tbl.bond": "Bond",
+    "tbl.unit": "Use unit",
+    "tbl.investor": "Investor",
+    "tbl.price": "Price",
+    "tbl.disc": "Discount",
+    "tbl.buy": "Buy",
+    "tbl.1bond": "1 bond",
+    "tbl.2bonds": "2 bonds",
+    "vac.title": "Vacancies for managers",
+    "vac.sub": "Projects in progress looking for people to manage their day-to-day. Work for the commons and enjoy communal life.",
+    "vac.c1.title": "🏠 Northern Commons Housing",
+    "vac.c1.meta": "Madrid · 85 m² · 3 bedrooms",
+    "vac.c1.role": "Role: Maintenance & community coordinator (4 h/week)",
+    "vac.c2.title": "☀️ Community Solar La Cañada",
+    "vac.c2.meta": "Seville · 48 panels · 24 kW",
+    "vac.c2.role": "Role: Monitoring & billing technician (6 h/week)",
+    "vac.c3.title": "🏢 Coworking Barrio Sur",
+    "vac.c3.meta": "Valencia · 80 m² · 20 desks",
+    "vac.c3.role": "Role: Space & community manager (10 h/week)",
+    "vac.c4.title": "🚲 Common Bike Workshop",
+    "vac.c4.meta": "Bilbao · 60 m² · Full toolset",
+    "vac.c4.role": "Role: Booking & maintenance coordinator (5 h/week)",
+    "vac.apply": "Apply",
+    "how.title": "How it works",
+    "how.sub": "Not debt. Not equity. A permanent, transferable use right, with no expiry.",
+    "how.tab1": "💰 Investors",
+    "how.tab2": "🔑 Users",
+    "how.tab3": "⚙️ Admins",
+    "how.i1.t": "Pick a project",
+    "how.i1.d": "Housing, energy, workspaces, workshops, storage — assets in permanent community ownership.",
+    "how.i2.t": "Buy bonds at a discount",
+    "how.i2.d": "Each bond grants a share of use of the asset. Issued at a discount (max 10%) depending on risk and timing.",
+    "how.i3.t": "Use and participate",
+    "how.i3.d": "Access the asset according to your share. You participate in consent-based governance: users, investors, and administrators.",
+    "how.i4.t": "Transfer or hold",
+    "how.i4.d": "Bonds never expire. You can transfer them to another member or hold them as a store of value. The asset never leaves the commons.",
+    "how.u1.t": "Pick a project (or create one)",
+    "how.u1.d": "Explore commons in progress or in funding, or propose a new one from \"Ideation\".",
+    "how.u2.t": "Connect with the group and get to know them",
+    "how.u2.d": "Meet the people already involved: users, investors, and administrators. Governance is by consent.",
+    "how.u3.t": "Buy bonds on the market or pay in €",
+    "how.u3.d": "Acquire use bonds on the secondary market or pay directly in euros. Your use share is guaranteed.",
+    "how.u4.t": "Enjoy communal life",
+    "how.u4.d": "Access the asset, participate in collective decisions, and live in community. No expiry, forever.",
+    "how.a1.t": "Browse vacancies",
+    "how.a1.d": "See which projects in progress are looking for managers: coordination, maintenance, booking management, billing…",
+    "how.a2.t": "Work for the commons and enjoy communal life",
+    "how.a2.d": "Work for a common asset by maintaining and managing its day-to-day. In return, access to the asset and community life.",
+    "idea.title": "In ideation",
+    "idea.sub": "Commons proposed by the community. Show your interest or contact the proposer.",
+    "idea.c1.title": "🌱 Community Garden Las Rosas",
+    "idea.c1.meta": "Getafe · 500 m² · 20 individual plots + shared garden",
+    "idea.c1.desc": "Individual growing plots and a shared garden. Access to tools, composting, and drip irrigation.",
+    "idea.c1.by": "Proposed by: Lucía M. · 2 weeks ago",
+    "idea.c1.contact": "Contact Lucía",
+    "idea.c2.title": "🏊 Community Pool El Sol",
+    "idea.c2.meta": "Cádiz · 25 m × 12 m · Unused municipal lot",
+    "idea.c2.desc": "Free-swimming pool managed by the community. No restrictive hours, with shade area and changing rooms.",
+    "idea.c2.by": "Proposed by: Andrés T. · 1 month ago",
+    "idea.c2.contact": "Contact Andrés",
+    "idea.c3.title": "🧵 Loom & Sewing Workshop",
+    "idea.c3.meta": "Ourense · 40 m² · 4 looms, 6 industrial sewing machines",
+    "idea.c3.desc": "Space for sewing, tailoring, and weaving. Basic materials included (threads, buttons, scrap fabrics). Ideal for those who want to learn or produce.",
+    "idea.c3.by": "Proposed by: Marta R. · 3 weeks ago",
+    "idea.c3.contact": "Contact Marta",
+    "idea.c4.title": "📚 Common Bookshop & Reading Room",
+    "idea.c4.meta": "A Coruña · 60 m² · ~800 books + reading room with 12 seats",
+    "idea.c4.desc": "Community lending library + silent reading room. The books belong to the community: you contribute and you take.",
+    "idea.c4.by": "Proposed by: Jorge P. · 5 days ago",
+    "idea.c4.contact": "Contact Jorge",
+    "idea.interested": "I'm interested",
+    "form.title": "Propose a common asset",
+    "form.desc": "Tell us what type of common asset you need in your life and where. It's published openly so others can join in.",
+    "form.type": "Type of asset",
+    "form.select": "Select…",
+    "form.opt1": "Housing",
+    "form.opt2": "Energy (solar, wind…)",
+    "form.opt3": "Coworking / workspace",
+    "form.opt4": "Storage",
+    "form.opt5": "Workshop / tools",
+    "form.opt6": "Community kitchen",
+    "form.opt7": "Garden / green space",
+    "form.opt8": "Shared equipment (mountain, bike…)",
+    "form.opt9": "Pool / sports space",
+    "form.opt10": "Library / reading room",
+    "form.opt11": "Other",
+    "form.where": "Where? (city / neighbourhood)",
+    "form.need": "What do you need? (optional)",
+    "form.name": "Your name (public)",
+    "form.contact": "Contact (email or Telegram, optional)",
+    "form.submit": "Publish my proposal",
+    "footer.p1": "Común · Conceptual mockup · Not a real financial product",
+    "footer.p2": "Inspired by Stroud Housing Commons, Use-Credit Obligations (Chris Cook / Island Power), and Mutual Credit Services."
+  }
+};
+
+function toggleLang() {
+  currentLang = currentLang === 'es' ? 'en' : 'es';
+  document.getElementById('lang-toggle').textContent = currentLang === 'es' ? 'EN' : 'ES';
+  document.documentElement.lang = currentLang;
+
+  document.querySelectorAll('[data-i18n]').forEach(el => {
+    const key = el.getAttribute('data-i18n');
+    if (T[currentLang][key]) {
+      // Use innerHTML for elements containing nested HTML (links)
+      if (T[currentLang][key].includes('<')) {
+        el.innerHTML = T[currentLang][key];
+      } else {
+        el.textContent = T[currentLang][key];
+      }
+    }
+  });
+
+  // Update placeholders
+  const placeholders = currentLang === 'en'
+    ? { where: "E.g.: London, Shoreditch", need: "Briefly describe the asset you need, the size, the frequency of use…", name: "Your name or alias", contact: "So the group can contact you" }
+    : { where: "Ej: Madrid, Lavapiés", need: "Describe brevemente el bien que necesitas, el tamaño, la frecuencia de uso…", name: "Tu nombre o alias", contact: "Para que el grupo pueda contactarte" };
+
+  const form = document.querySelector('.ideacion-form');
+  if (form) {
+    const inputs = form.querySelectorAll('input, textarea');
+    inputs[0].placeholder = placeholders.where;
+    inputs[1].placeholder = placeholders.need;
+    inputs[2].placeholder = placeholders.name;
+    inputs[3].placeholder = placeholders.contact;
+  }
 }
 </script>
 
